@@ -13,9 +13,7 @@
 </head>
 
 <body>
-    <div id="app">
-        @yield('main')
-    </div>
+    @yield('main')
     @livewireScripts
 </body>
 

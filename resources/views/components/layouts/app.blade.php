@@ -1,7 +1,8 @@
 @extends('components.layouts.main')
 @section('main')
-    <header>
-    </header>
-    {{ $slot }}
-    <footer></footer>
+    <x-layouts.header />
+    <main id="app">
+        {{ $slot }}
+    </main>
+    {{-- <footer></footer> --}}
 @endsection
