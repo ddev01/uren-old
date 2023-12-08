@@ -6,8 +6,9 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                poppins: ['Poppins', 'system-ui', 'sans-serif'],
-                inter: ['Inter', 'system-ui', 'sans-serif'],
+                geist: ['Geist', 'system-ui', 'sans-serif'],
+                // poppins: ['Poppins', 'system-ui', 'sans-serif'],
+                // inter: ['Inter', 'system-ui', 'sans-serif'],
             },
             zIndex: {
                 1: '1',

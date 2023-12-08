@@ -11,3 +11,5 @@ composer.lock
 package-lock.json
 package.json
 readme.md
+
+resources/views/components/button.blade.php

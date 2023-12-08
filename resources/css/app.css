@@ -8,11 +8,7 @@
 }
 
 body {
-    @apply overflow-x-hidden font-poppins text-black;
-}
-
-p {
-    @apply font-inter;
+    @apply overflow-x-hidden font-geist text-white;
 }
 
 * {
@@ -38,9 +34,6 @@ p {
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
-.test {
-    @apply mt-4;
-    &-new {
-        @apply mt-2;
-    }
+#app {
+    @apply min-h-screen min-w-max bg-gray-900;
 }
