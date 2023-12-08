@@ -1,0 +1,13 @@
+/vendor
+/node_modules
+/storage
+/public
+/bootstrap
+/config
+/tests
+/bootstrap
+composer.json
+composer.lock
+package-lock.json
+package.json
+readme.md
