@@ -3,7 +3,7 @@
 @endphp
 <div>
     <x-container class="py-4">
-        <div id="estimate-data" x-data="{ estimate: @json($estimate), sections: @json($sections), rows: @json($rows) }">
+        <div>
             <div class="w-full rounded-md bg-gray-700 p-4">
                 <div class="flexb">
                     <x-input.input name="name" value="{{ $estimate->name }}" label="name" wire:model="name" />
@@ -21,8 +21,22 @@
                         <div class="flex-grow">Notes</div>
                         <div class="w-[90px]">Actions</div>
                     </div>
-                    <div x-data="{ sections: {{ $sectionsJson }} }">
-                        <template x-for="section in sections" :key="section.id">
+                    <div id="Sections" x-data="{
+                        sections: {{ $sectionsJson }},
+                        addRow(sectionIndex) {
+                            if (this.sections[sectionIndex] && Array.isArray(this.sections[sectionIndex].rows)) {
+                                this.sections[sectionIndex].rows.push({
+                                    type: '',
+                                    hours: '',
+                                    name: 'New Row',
+                                    description: 'Description',
+                                    note: '',
+                                    position: this.sections[sectionIndex].rows.length
+                                });
+                            }
+                        },
+                    }">
+                        <template x-for="(section, index) in sections" :key="section.position">
                             <div class="relative">
                                 <div class="mt-4 gap-2 rounded-md bg-green-800 p-3 flexy">
                                     <div class="w-[125px]">Type</div>
@@ -32,8 +46,8 @@
                                     <div class="flex-1" x-text="section.note">Notes</div>
                                     <div class="w-[90px]">Actions</div>
                                 </div>
-                                <template x-for="row in section.rows" :key="row.id"> --}}
-                                    <div class="gap-2 bg-blue-800 p-3 flexy">
+                                <template x-for="row in section.rows" :key="row.position"> --}}
+                                    <div class="gap-2 bg-blue-800 p-3 flexy" :data-position="row.position">
                                         <div class="w-[125px]" x-text="row.type"></div>
                                         <div class="w-[60px]" x-text="row.hours"></div>
                                         <div class="flex-1" x-text="row.name"></div>
@@ -42,7 +56,9 @@
                                         <div class="w-[90px]">Actions</div>
                                     </div>
                                 </template>
-                                <button class="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 flexc" @click=""><i class="fa-solid fa-square-plus"></i></button>
+                                <button class="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 flexc" @click="addRow(index)">
+                                    <i class="fa-solid fa-square-plus"></i></button>
+                                <button class="right-left absolute bottom-0 translate-x-1/2 translate-y-1/2 flexc" @click=""><i class="fa-solid fa-square-plus"></i></button>
                             </div>
                         </template>
                     </div>
