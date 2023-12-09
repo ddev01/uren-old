@@ -4,7 +4,7 @@
         {{ $slot }}
     </div>
 @else
-    <div {{ $attributes->merge(['class' => 'mx-auto max-w-[1140px] px-[20px] md:px-0']) }}>
+    <div {{ $attributes->merge(['class' => 'mx-auto max-w-[1140px] px-[20px]']) }}>
         {{ $slot }}
     </div>
 @endif

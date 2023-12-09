@@ -6,35 +6,57 @@ use Livewire\Component;
 use App\Models\Estimate;
 use App\Models\EstimateSection;
 use App\Models\EstimateSectionRow;
+use Usernotnull\Toast\Concerns\WireToast;
+
 
 class Index extends Component
 {
+    use WireToast;
     public $estimates;
     public $name;
 
+
     public function create()
     {
-        $estimate = Estimate::create([
-            'name' => $this->name,
-            'user_id' => auth()->id(),
-        ]);
+        try {
+            $estimate = Estimate::create([
+                'name' => $this->name,
+                'user_id' => auth()->id(),
+            ]);
 
-        $section = EstimateSection::create([
-            'estimate_id' => $estimate->id,
-        ]);
+            $section = EstimateSection::create([
+                'estimate_id' => $estimate->id,
+            ]);
 
-        EstimateSectionRow::create([
-            'estimate_section_id' => $section->id,
-        ]);
+            EstimateSectionRow::create([
+                'estimate_section_id' => $section->id,
+            ]);
 
-        $this->estimates = Estimate::all();
+            $this->estimates = Estimate::all();
+
+            toast()
+                ->success('Created successfully', 'Estimate')
+                ->push();
+        } catch (\Exception $e) {
+            toast()
+                ->danger('Something went wrong', 'Estimate')
+                ->push();
+        }
     }
 
     public function delete($id)
     {
-        $estimate = Estimate::find($id);
-        $estimate->delete();
-
+        try {
+            $estimate = Estimate::find($id);
+            $estimate->delete();
+            toast()
+                ->success('Deleted successfully', 'Estimate')
+                ->push();
+        } catch (\Exception $e) {
+            toast()
+                ->danger('Something went wrong', 'Estimate')
+                ->push();
+        }
         $this->estimates = Estimate::all();
     }
 
