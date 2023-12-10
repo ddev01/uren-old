@@ -8,7 +8,9 @@
                 {{ $prefix }}
             </div>
         @endif
-        <input class="h-full min-h-[40px] w-full rounded-sm bg-gray-800 px-4 py-2 focus:outline-none" id="{{ $name }}" name="{{ $name }}" {{ $attributes }}>
+        <select class="h-full min-h-[40px] w-full rounded-sm bg-gray-800 px-4 py-2 focus:outline-none" id="{{ $name }}" name="{{ $name }}" {{ $attributes }}>
+            {{ $slot }}
+        </select>
         @if ($suffix ?? false)
             <div class="absolute right-[8px] top-0">
                 {{ $suffix }}

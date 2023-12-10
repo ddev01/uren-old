@@ -9,28 +9,40 @@ class Edit extends Component
 {
     public $estimate;
 
+    public $showNotes;
+
+    public $name;
+
+    public $price;
+
     public function mount(Estimate $estimate)
     {
         $this->estimate = $estimate;
+        $this->showNotes = $this->estimate->show_notes;
+        $this->name = $this->estimate->name;
+        $this->price = $this->estimate->hourly_rate;
     }
 
-    public function data($estimate)
+    public function handleShowNotesChange()
     {
-        $rowsArray = [];
+        $this->estimate->show_notes = $this->showNotes;
+        $this->estimate->save();
+    }
 
-        foreach ($estimate->sections as $section) {
-            array_push($rowsArray, $section->rows);
-        }
+    public function updatedName()
+    {
+        $this->estimate->name = $this->name;
+        $this->estimate->save();
+    }
 
-        return [
-            'estimate' => $estimate,
-            'sections' => $estimate->sections,
-            'rows' => $rowsArray,
-        ];
+    public function updatedPrice()
+    {
+        $this->estimate->hourly_rate = $this->price;
+        $this->estimate->save();
     }
 
     public function render()
     {
-        return view('livewire.pages.estimate.edit', $this->data($this->estimate));
+        return view('livewire.pages.estimate.edit');
     }
 }

@@ -9,7 +9,7 @@
             </div>
         @endif
         <input
-            class="no-spinners h-full min-h-[40px] rounded-sm bg-gray-800 px-4 py-2 focus:outline-none"
+            class="no-spinners h-full min-h-[40px] w-full rounded-sm bg-gray-800 px-4 py-2 focus:outline-none"
             id="{{ $name }}"
             name="{{ $name }}"
             type="number"
