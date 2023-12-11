@@ -19,7 +19,10 @@
     <div class="flex-1" x-show="showNotes">
         <x-input.input name="row-notes" wire:model.lazy="note" />
     </div>
-    <div class="w-[90px]">
-        <i class="fa-solid fa-square-minus" wire:click="deleteRow"></i>
+    <div class="w-[90px] flexb">
+        <i class="fa-solid fa-square-minus" wire:click="rowDelete"></i>
+        <button class="fa-solid fa-clone" wire:click="rowDuplicate"></button>
+        <button class="fa-solid fa-angle-up" wire:click="rowUp"></button>
+        <button class="fa-solid fa-angle-down" wire:click="rowDown"></button>
     </div>
 </div>

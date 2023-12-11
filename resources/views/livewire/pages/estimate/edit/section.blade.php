@@ -1,4 +1,4 @@
-<div class="relative">
+<div class="relative" data-position="{{ $section->position }}">
     <div class="mt-4 gap-2 rounded-t-md bg-green-800 p-3 flexy">
         <div class="w-[125px]"></div>
         <div class="w-[60px]"></div>
@@ -11,8 +11,12 @@
         <div class="flex-1" x-show="showNotes">
             <x-input.input name="note" wire:model.lazy="note" />
         </div>
-        <div class="w-[90px]">
-            <i class="fa-solid fa-square-minus" wire:click="deleteSection"></i>
+        <div class="w-[90px] flexb">
+            <button class="fa-solid fa-square-minus" wire:click="sectionDelete"></button>
+            <button class="fa-solid fa-clone" wire:click="sectionDuplicate"></button>
+            <button class="fa-solid fa-angle-up" wire:click="sectionUp"></button>
+            <button class="fa-solid fa-angle-down" wire:click="sectionDown"></button>
+
         </div>
     </div>
     @foreach ($section->rows as $row)

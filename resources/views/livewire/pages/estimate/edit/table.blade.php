@@ -1,4 +1,5 @@
 <div>
+    <div class="min-h-[100px] min-w-[200px] bg-red-400 text-lg text-black">{{ $estimate->executed }}</div>
     <div class="gap-2 rounded-md bg-amber-700 p-3 flexy">
         <div class="w-[125px]">Type</div>
         <div class="w-[60px]">Hours</div>
