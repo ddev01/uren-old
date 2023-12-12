@@ -2,19 +2,19 @@
 
 namespace App\Livewire\Pages\Estimate;
 
-use Livewire\Component;
 use App\Models\Estimate;
 use App\Models\EstimateSection;
 use App\Models\EstimateSectionRow;
+use Livewire\Component;
 use Usernotnull\Toast\Concerns\WireToast;
-
 
 class Index extends Component
 {
     use WireToast;
-    public $estimates;
-    public $name;
 
+    public $estimates;
+
+    public $name;
 
     public function create()
     {

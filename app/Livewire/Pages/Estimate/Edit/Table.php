@@ -8,14 +8,6 @@ class Table extends Component
 {
     public $estimate;
 
-    public $executed;
-
-    public function mount($estimate)
-    {
-        $this->estimate = $estimate;
-        $this->executed = $this->estimate->executed;
-    }
-
     public function updatedExecuted()
     {
         $this->estimate->executed = $this->executed;

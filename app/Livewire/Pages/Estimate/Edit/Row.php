@@ -12,6 +12,8 @@ class Row extends Component
 
     public $hours;
 
+    public $displayHours;
+
     public $name;
 
     public $description;
@@ -24,7 +26,11 @@ class Row extends Component
     {
         $this->row = $row;
         $this->type = $this->row->type;
-        $this->hours = $this->row->hours;
+        if ($this->row->hours == 0) {
+            $this->displayHours = '';
+        } else {
+            $this->displayHours = $this->row->hours;
+        }
         $this->name = $this->row->name;
         $this->description = $this->row->description;
         $this->note = $this->row->note;
@@ -37,9 +43,24 @@ class Row extends Component
         $this->row->save();
     }
 
+    public function updatedDisplayHours()
+    {
+        if ($this->displayHours == '') {
+            $this->hours = 0;
+        } else {
+            $this->hours = $this->displayHours;
+        }
+        $this->row->hours = $this->hours;
+        $this->row->save();
+    }
+
     public function updatedHours()
     {
-        $this->row->hours = $this->hours;
+        if ($this->hours == '') {
+            $this->hours = 0;
+        } else {
+            $this->row->hours = $this->hours;
+        }
         $this->row->save();
     }
 

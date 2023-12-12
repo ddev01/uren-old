@@ -8,7 +8,13 @@
         </x-input.select>
     </div>
     <div class="w-[60px]">
-        <x-input.number name="row-hours" wire:model.lazy="hours" />
+        <x-input.number
+            class="row-hours"
+            name="row-hours"
+            x-on:input="calculateTotal"
+            x-ref="rowHours"
+            wire:model.lazy="displayHours"
+        />
     </div>
     <div class="flex-1">
         <x-input.input name="row-name" wire:model.lazy="name" />
