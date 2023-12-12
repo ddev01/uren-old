@@ -1,5 +1,5 @@
 <div>
-    <div class="gap-2 rounded-md bg-amber-700 p-3 flexy">
+    <div class="gap-2 rounded-md bg-gray-400/20 p-3 flexy">
         <div class="w-[125px]">Type</div>
         <div class="w-[60px]">Hours</div>
         <div class="flex-1">Title</div>

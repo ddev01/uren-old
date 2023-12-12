@@ -1,18 +1,23 @@
 <div class="relative" data-position="{{ $section->position }}" x-data="{
     'sectionHours': 21,
-    calculateTotal: function() {
+    sectionTotal: function() {
         let total = 0;
-        $el.querySelectorAll('.row-hours input').forEach((el) => {
-            let value = el.value ? parseInt(el.value) : 0;
-            total += value;
+        $el.querySelectorAll('.row-wrapper').forEach((el) => {
+            let rowType = el.querySelector('[name=row-type]').value;
+            if (rowType && ['default', 'optional', 'custom'].includes(rowType)) {
+                let rowHours = el.querySelector('[name=row-hours]').value;
+                if (rowHours && rowHours != '') {
+                    total += parseInt(rowHours);
+                }
+            }
         });
         this.sectionHours = total;
     },
 }">
-    <div class="mt-4 gap-2 rounded-t-md bg-green-800 p-3 flexy">
+    <div class="mt-4 gap-2 rounded-t-md bg-gray-400/20 p-3 flexy">
         <div class="w-[125px]"></div>
-        <div class="w-[60px]" x-text="sectionHours"></div>
-        <button @click="calculateTotal">calc hours</button>
+        <div class="w-[60px] px-4" x-text="sectionHours"></div>
+        {{--        <button @click="tableTotal">calc hours</button> --}}
         <div class="flex-1">
             <x-input.input name="name" wire:model.lazy="name" />
         </div>
@@ -22,9 +27,9 @@
         <div class="flex-1" x-show="showNotes">
             <x-input.input name="note" wire:model.lazy="note" />
         </div>
-        <div class="w-[90px] flexb">
-            <button class="fa-solid fa-square-minus" wire:click="sectionDelete"></button>
-            <button class="fa-solid fa-clone" wire:click="sectionDuplicate"></button>
+        <div class="w-[90px] p-1 flexb">
+            <button class="fa-solid fa-square-minus" wire:click="sectionDelete" @click="tableTotal"></button>
+            <button class="fa-solid fa-clone" wire:click="sectionDuplicate" @click="tableTotal"></button>
             <button class="fa-solid fa-angle-up" wire:click="sectionUp"></button>
             <button class="fa-solid fa-angle-down" wire:click="sectionDown"></button>
 
@@ -33,7 +38,7 @@
     @foreach ($section->rows as $row)
         <livewire:pages.estimate.edit.row :row="$row" :key="$row->id" />
     @endforeach
-    <div class="hidden" x-init="calculateTotal"></div>
+    <div class="hidden" x-init="sectionTotal"></div>
     <button class="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 flexc" wire:click="pushRow">
         <i class="fa-solid fa-square-plus"></i></button>
     <button class="right-left absolute bottom-0 -translate-x-1/2 translate-y-1/2 flexc" wire:click="pushSection">
