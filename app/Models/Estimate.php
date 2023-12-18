@@ -20,4 +20,8 @@ class Estimate extends Model
     {
         return $this->hasMany(EstimateSection::class, 'estimate_id')->orderBy('position');
     }
+    public function shares()
+    {
+        return $this->hasMany(EstimateShare::class, 'estimate_id');
+    }
 }

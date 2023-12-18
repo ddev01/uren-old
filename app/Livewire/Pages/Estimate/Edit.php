@@ -14,6 +14,7 @@ class Edit extends Component
     public $name;
 
     public $price;
+    public $public;
 
     public function mount(Estimate $estimate)
     {
@@ -21,13 +22,23 @@ class Edit extends Component
         $this->showNotes = $this->estimate->show_notes;
         $this->name = $this->estimate->name;
         $this->price = $this->estimate->hourly_rate;
+        $this->public = $this->estimate->public;
     }
-
+    public function updatedPublic()
+    {
+        $this->estimate->public = $this->public;
+        $this->estimate->save();
+    }
     public function handleShowNotesChange()
     {
         $this->estimate->show_notes = $this->showNotes;
         $this->estimate->save();
     }
+    // public function handlePublicChange()
+    // {
+    //     $this->estimate->public = $this->public;
+    //     $this->estimate->save();
+    // }
 
     public function updatedName()
     {

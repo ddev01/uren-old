@@ -17,5 +17,9 @@ class DatabaseSeeder extends Seeder
             'email' => 'dev@outlawz.nl',
             'password' => Hash::make('admin'),
         ]);
+        \App\Models\User::factory()->create([
+            'email' => 'test@test.nl',
+            'password' => Hash::make('test'),
+        ]);
     }
 }

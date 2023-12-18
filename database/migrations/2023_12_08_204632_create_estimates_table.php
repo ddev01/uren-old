@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name')->default('New estimate');
             $table->integer('hourly_rate')->default(50)->nullable();
             $table->boolean('show_notes')->default(true);
+            $table->boolean('public')->default(false);
             $table->uuid('user_id');
             $table
                 ->foreign('user_id')

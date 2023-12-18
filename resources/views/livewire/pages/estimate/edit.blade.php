@@ -20,7 +20,7 @@
                     console.log(rowType, rowHours);
                     if (rowType && rowHours != '') {
                         if (rowType == 'default') {
-
+        
                             defaultHours += parseInt(rowHours);
                         }
                         if (rowType == 'optional') {
@@ -48,6 +48,13 @@
                 <div class="flexb">
                     <x-input.input name="name" label="name" wire:model.lazy="name" />
                     <div class="gap-2 flexy">
+                        <x-modal.primary>
+                            <x-slot name="button">
+                                <i class="fa-solid fa-user-plus fa-xl"></i>
+                            </x-slot>
+                            test
+                        </x-modal.primary>
+                        <x-input.checkbox name="public" label="public" wire:model.lazy="public" :checked="$public == '1'" />
                         <x-input.checkbox
                             name="notes"
                             label="notes"

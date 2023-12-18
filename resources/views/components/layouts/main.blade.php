@@ -12,7 +12,7 @@
     @livewireStyles
 </head>
 
-<body>
+<body x-data="{ bodyScroll: true }" :class="{ 'overflow-y-hidden': !bodyScroll }">
     <livewire:toasts />
     @yield('main')
     @livewireScripts

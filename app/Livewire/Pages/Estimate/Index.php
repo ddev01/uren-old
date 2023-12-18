@@ -62,7 +62,7 @@ class Index extends Component
 
     public function mount()
     {
-        $this->estimates = Estimate::all();
+        $this->estimates = Estimate::where('user_id', auth()->id())->get();
     }
 
     public function render()

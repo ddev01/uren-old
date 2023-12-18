@@ -20,5 +20,9 @@ Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/estimate', App\Livewire\Pages\Estimate\Index::class)->name('estimate.index');
+    // Route::get('/estimate/{estimate}', App\Livewire\Pages\Estimate\Edit::class)->name('estimate.edit');
+});
+Route::group(['middleware' => ['EstimatePermissions']], function () {
+    // Route::get('/estimate', App\Livewire\Pages\Estimate\Index::class)->name('estimate.index');
     Route::get('/estimate/{estimate}', App\Livewire\Pages\Estimate\Edit::class)->name('estimate.edit');
 });
