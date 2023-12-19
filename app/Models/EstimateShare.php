@@ -10,5 +10,5 @@ class EstimateShare extends Model
 {
     use HasFactory, HasUuids;
 
-    protected $fillable = ['email', 'estimate_id'];
+    protected $fillable = ['user_email', 'estimate_id'];
 }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('user_email');
             $table->timestamps();
             $table->foreign('estimate_id')->references('id')->on('estimates')->onDelete('cascade');
+            $table->unique(['estimate_id', 'user_email']);
         });
     }
 

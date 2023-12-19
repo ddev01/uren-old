@@ -44,3 +44,9 @@ body {
 input[type="checkbox"]:checked::after {
     @apply absolute content-[''] w-[24px] h-[24px] rounded-sm bg-green-400/75 flexc bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2;
 }
+button{
+    @apply transition-all cursor-pointer;
+    &:hover{
+        @apply opacity-90 scale-110;
+    }
+}

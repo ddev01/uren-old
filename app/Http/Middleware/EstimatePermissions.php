@@ -14,11 +14,15 @@ class EstimatePermissions
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
-    
     {
         $estimate = $request->route('estimate');
-        $shared = $estimate->shares()->where('user_email', auth()->user()->email)->first();
-        // dd($estimate->public);
+        $shared = null;
+
+        // Check if the user is logged in
+        if (auth()->check()) {
+            $shared = $estimate->shares()->where('user_email', auth()->user()->email)->first();
+        }
+
         if ($estimate->user_id !== auth()->id() && $estimate->public === 0 && !$shared) {
             abort(404);
         }

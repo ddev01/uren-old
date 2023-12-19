@@ -49,10 +49,11 @@
                     <x-input.input name="name" label="name" wire:model.lazy="name" />
                     <div class="gap-2 flexy">
                         <x-modal.primary>
+                            
                             <x-slot name="button">
-                                <i class="fa-solid fa-user-plus fa-xl"></i>
+                                <i class="fa-solid fa-user-plus fa-xl" :class="{ 'text-green-500': <?php echo $estimate->public == 1 ? 'true' : 'false'; ?> }"></i>
                             </x-slot>
-                            test
+                            <livewire:components.modal.share-manage :estimate="$estimate"/>
                         </x-modal.primary>
                         <x-input.checkbox name="public" label="public" wire:model.lazy="public" :checked="$public == '1'" />
                         <x-input.checkbox
