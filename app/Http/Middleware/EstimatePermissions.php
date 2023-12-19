@@ -23,9 +23,10 @@ class EstimatePermissions
             $shared = $estimate->shares()->where('user_email', auth()->user()->email)->first();
         }
 
-        if ($estimate->user_id !== auth()->id() && $estimate->public === 0 && !$shared) {
+        if ($estimate->user_id !== auth()->id() && $estimate->public === 0 && ! $shared) {
             abort(404);
         }
+
         return $next($request);
     }
 }

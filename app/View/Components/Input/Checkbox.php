@@ -9,14 +9,14 @@ use Illuminate\View\Component;
 class Checkbox extends Component
 {
     public $name;
+
     public $label;
+
     public function __construct($name, $label = false)
     {
         $this->name = $name;
         $this->label = $label;
     }
-
-    
 
     /**
      * Get the view / contents that represent the component.

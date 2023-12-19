@@ -2,31 +2,37 @@
 
 namespace App\Livewire\Components\Modal;
 
-use Livewire\Component;
 use App\Models\EstimateShare;
 use Illuminate\Database\QueryException;
-
+use Livewire\Component;
 use Usernotnull\Toast\Concerns\WireToast;
 
 class ShareManage extends Component
 {
     use WireToast;
+
     public $email;
+
     public $estimate;
+
     public $sharedUsers;
+
     protected $rules = [
         'email' => 'required|email',
     ];
+
     public function getSharedEmails()
     {
         $this->sharedUsers = EstimateShare::where('estimate_id', $this->estimate->id)
             ->pluck('user_email');
     }
+
     public function mount($estimate)
     {
         $this->estimate = $estimate;
         $this->getSharedEmails();
     }
+
     public function submit()
     {
         $this->validate();
@@ -56,6 +62,7 @@ class ShareManage extends Component
             }
         }
     }
+
     public function deleteSharedUser($user)
     {
         try {
@@ -72,6 +79,7 @@ class ShareManage extends Component
                 ->push();
         }
     }
+
     public function render()
     {
         return view('livewire.components.modal.share-manage');
