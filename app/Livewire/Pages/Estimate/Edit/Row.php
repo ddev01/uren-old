@@ -74,6 +74,7 @@ class Row extends Component
     {
         $this->row->description = $this->description;
         $this->row->save();
+        $this->render();
     }
 
     public function updatedNote()
