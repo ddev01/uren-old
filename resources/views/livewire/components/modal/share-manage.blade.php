@@ -8,19 +8,22 @@
                     {{ session()->get('message') }}
                 </div>
             @endif
-            <x-button class="mt-4" type="submit">Add user</x-button>
+            <div class="gap-4 flex items-end mt-4">
+                <x-button class="mt-4" type="submit">Add user</x-button>
+                <x-input.checkbox wire:model.lazy="sendMail" name="sendmail" label="{{ __('Send email') }}" />
+            </div>
         </form>
     </div>
     <div>
         <h2 class="text-xl">Users who can view this estimate</h2>
 
         @if (!$sharedUsers->isEmpty())
-            <div class="flex flex-col divide-y divide-gray-400 mt-6">
+            <div class="mt-6 flex flex-col divide-y divide-gray-400">
                 @foreach ($sharedUsers as $sharedUser)
                     {{-- <div>{{ $sharedUser }}</div> --}}
-                    <div class="flexb py-2 px-2">
+                    <div class="px-2 py-2 flexb">
                         <div>{{ $sharedUser }}</div>
-                        <i class="hover:scale-110 hover:opacity-90 transition-all fa-solid fa-user-xmark cursor-pointer hover:text-red-500" wire:click="deleteSharedUser('{{ $sharedUser }}')"></i>
+                        <i class="fa-solid fa-user-xmark cursor-pointer transition-all hover:scale-110 hover:text-red-500 hover:opacity-90" wire:click="deleteSharedUser('{{ $sharedUser }}')"></i>
                     </div>
                 @endforeach
             </div>

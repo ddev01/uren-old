@@ -9,7 +9,7 @@
 }
 
 body {
-    @apply overflow-x-hidden font-geist text-white;
+    @apply overflow-x-hidden font-geist text-white min-h-screen min-w-max;
 }
 
 * {
@@ -37,9 +37,7 @@ body {
     scrollbar-width: none;
 }
 
-#app {
-    @apply min-h-screen min-w-max bg-gray-900;
-}
+
 
 input[type="checkbox"]:checked::after {
     @apply absolute content-[''] w-[24px] h-[24px] rounded-sm bg-green-400/75 flexc bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2;

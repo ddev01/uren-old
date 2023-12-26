@@ -6,6 +6,10 @@ use App\Models\EstimateShare;
 use Illuminate\Database\QueryException;
 use Livewire\Component;
 use Usernotnull\Toast\Concerns\WireToast;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Estimate\Shared;
+use App\Models\User;
+
 
 class ShareManage extends Component
 {
@@ -16,6 +20,8 @@ class ShareManage extends Component
     public $estimate;
 
     public $sharedUsers;
+
+    public $sendMail;
 
     protected $rules = [
         'email' => 'required|email',
@@ -42,6 +48,18 @@ class ShareManage extends Component
                 'estimate_id' => $this->estimate->id,
                 'user_email' => $this->email,
             ]);
+            if ($this->sendMail) {
+                $data = [
+                    'inviteeName' => User::where('email', $this->email)->first()?->name ?? null,
+                    'inviteeMail' => $this->email,
+                    'inviterName' => auth()->user()->name,
+                    'inviterMail' => auth()->user()->email,
+                    'estimateName' => $this->estimate->name,
+                    'estimateLink' => route('estimate.edit', $this->estimate->id),
+                ];
+                Mail::to($this->email)
+                    ->send(new Shared($data));
+            }
             toast()
                 ->success('User added to estimate successfully', 'Estimate')
                 ->push();

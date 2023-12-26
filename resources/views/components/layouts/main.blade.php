@@ -12,10 +12,9 @@
     @livewireStyles
 </head>
 
-<body x-data="{ bodyScroll: true }" :class="{ 'overflow-y-hidden': !bodyScroll }">
+<body x-data="{ bodyScroll: true }" :class="{ 'overflow-y-hidden': !bodyScroll }" class="bg-gray-900 min-h-[calc(100vh-56px)]">
     <livewire:toasts />
     @yield('main')
     @livewireScripts
 </body>
-
 </html>

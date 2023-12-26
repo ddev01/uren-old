@@ -1,4 +1,4 @@
-<div x-data="{ modal: false }">
+<div x-data="{ modal: true }">
     @if ($button)
         <button @click="modal=true;bodyScroll=false">
             {{ $button }}

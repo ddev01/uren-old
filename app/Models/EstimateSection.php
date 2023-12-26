@@ -10,6 +10,8 @@ class EstimateSection extends Model
 {
     use HasFactory, HasUuids;
 
+    // protected $touches = ['estimate'];
+
     protected $fillable = ['name', 'description', 'note', 'position', 'estimate_id'];
 
     public function estimate()

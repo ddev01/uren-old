@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', App\Livewire\Pages\Home\Index::class)->name('home');
+Route::redirect('/', '/estimate');
+Route::redirect('/home', '/estimate');
 
 Auth::routes();
 
