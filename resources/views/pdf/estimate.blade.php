@@ -28,7 +28,7 @@
         }
         .spacer-row{
             height: 10pt;
-            background: #f0f0f0;
+            /* background: #f0f0f0; */
         }
         td.w-type{
             width: 55pt;
@@ -59,12 +59,50 @@
         .gray {
             color: gray;
         }
+        table.bordered td {
+            vertical-align: top;
+        }
+        .information td {
+            vertical-align: bottom;
+        }
+        #header a{
+            color: #FFF;
+            text-decoration: none;
+        
+        }
+* {
+        font-family: Verdana, Arial, sans-serif;
+    }
+
     </style>
 @endsection
+<div id="header" class="information">
+    <table width="100%">
+        <h1>Urenschatting</h1>
 
+        <tr>
+            <td align="left" style="width: 40%; line-height: 175%;">
+                <div>
+                    <div>{{ __('Name') }}: {{ $estimate->name }}</div>
+                    <div>{{ __('Created by') }}: {{ $estimate->user->name }}</div>
+                    <div>Email: <a href="mailto:{{ $estimate->user->email }}">{{ $estimate->user->email }}</a></div>
+                    <div>{{ __('Date') }}: {{ $estimate->created_at->format('d-m-Y') }}</div>
+                </div>
+            </td>
+            <td align="center">
+                {{-- <img src="/path/to/logo.png" alt="Logo" width="64" class="logo"/> --}}
+            </td>
+            <td align="right" style="width: 40%; line-height: 175%;">
+                
+                    {{ __('Hourly rate') }}: {{ $estimate->hourly_rate }}
+                
+            </td>
+        </tr>
+
+    </table>
+</div>
 @section('content')
-    <div class="h1">{{ __('Urenschatting') }}</div>
-
+    {{-- <div class="h1">{{ __('Urenschatting') }}</div> --}}
     <table class="bordered mb-4">
         <tr>
             <td class="bg-light fw-bold w-type">
@@ -94,7 +132,7 @@
                 </td>
                 <td class="bg-light fw-bold">{{ $section->name }}</td>
                 <td class="bg-light fw-bold">{{ $section->description }}</td>
-                <td class="bg-light fw-bold">{{ $section->note }}</td>
+                @if($estimate->show_notes)<td class="bg-light fw-bold">{{ $section->note }}</td>@endif
             </tr>
             @foreach($section->rows as $row)
                 <tr>

@@ -70,12 +70,13 @@
         body {
             padding: 0;
             margin: 0;
+            font-family: 'Calibri';
         }
 
         body {
             
-            padding-top: {{ config('paper.A4.margin.top') }}pt;
-            padding-bottom: {{ config('paper.A4.margin.bottom') }}pt;
+            /* padding-top: {{ config('paper.A4.margin.top') }}pt;
+            padding-bottom: {{ config('paper.A4.margin.bottom') }}pt; */
             font-family: 'Calibri';
             font-size: {{ config('paper.A4.font-size') }}pt;
             line-height: 90%;
@@ -84,11 +85,38 @@
         #content {
             padding-left: {{ config('paper.A4.margin.left') }}pt;
             padding-right: {{ config('paper.A4.margin.right') }}pt;
+            /* padding-top: {{ config('paper.A4.margin.top') }}pt; */
+            padding-top: {{ config('paper.A4.margin.right') }}pt;
+            padding-bottom: {{ config('paper.A4.margin.bottom') }}pt;
+        }
+        #header{
+            padding-left: {{ config('paper.A4.margin.left') }}pt;
+            padding-right: {{ config('paper.A4.margin.right') }}pt;
+            /* padding-top: {{ config('paper.A4.margin.top') }}pt; */
+            /* padding-bottom: {{ config('paper.A4.margin.bottom') }}pt; */
+            padding-top: {{ config('paper.A4.margin.right') }}pt;
+            padding-bottom: {{ config('paper.A4.margin.left') }}pt;
         }
 
         table {
             border-spacing: 0;
             border-collapse: separate;
+        }
+        .information {
+            background-color: #60A7A6;
+            color: #FFF;
+            
+        }
+        a.footer-link{
+            color: #FFF;
+            text-decoration: none;
+            text-decoration: underline;
+        }
+        .information .logo {
+            margin: 5px;
+        }
+        .information table {
+            padding: 10px;
         }
     </style>
 
@@ -98,6 +126,19 @@
 <body>
     <div id="content">
         @yield('content')
+    </div>
+    <div  class="information" style="position: absolute; bottom: 0; width: 100%;">
+        <table width="100%">
+            <tr>
+                <td align="left" style="width: 50%;">
+                    &copy; {{ date('Y') }} <a class="footer-link" href="{{ config('app.url') }}" target="_">{{ config('app.name') }}</a> - {{ __('All rights reserved') }}.
+                </td>
+                <td align="right" style="width: 50%;">
+                    {{-- Slogan --}}
+                </td>
+            </tr>
+    
+        </table>
     </div>
 
     {{-- Page numbering (location not affected by DPI) --}}

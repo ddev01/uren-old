@@ -21,6 +21,7 @@ class EstimatePdfController extends Controller
 {
     $totals = $this->initializeTotals($estimate->sections);
     $totals = $this->calculateTotals($totals, $estimate->hourly_rate);
+    $estimate->hourly_rate = $this->formatPrice($estimate->hourly_rate);
 
     // Format each row's hours
     foreach ($estimate->sections as $section) {
