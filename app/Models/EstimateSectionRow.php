@@ -18,6 +18,7 @@ class EstimateSectionRow extends Model
     {
         return $this->belongsTo(EstimateSection::class, 'estimate_section_id');
     }
+
     public function estimate()
     {
         return $this->belongsTo(Estimate::class, 'estimate_id');

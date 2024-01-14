@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EstimatePdfController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +29,5 @@ Route::group(['middleware' => ['EstimatePermissions']], function () {
     // Route::get('/estimate', App\Livewire\Pages\Estimate\Index::class)->name('estimate.index');
     Route::get('/estimate/{estimate}', App\Livewire\Pages\Estimate\Edit::class)->name('estimate.edit');
 });
+
+Route::get('/pdf/{estimate}', [EstimatePdfController::class, 'streamPdf'])->name('estimate.pdf');

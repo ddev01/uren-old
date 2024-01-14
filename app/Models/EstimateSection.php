@@ -23,4 +23,8 @@ class EstimateSection extends Model
     {
         return $this->hasMany(EstimateSectionRow::class, 'estimate_section_id')->orderBy('position');
     }
+    public function defaultHours()
+    {
+        return $this->rows->where('type', 'default')->sum('hours');
+    }
 }

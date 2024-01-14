@@ -3,7 +3,6 @@
 namespace App\Mail\Estimate;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -26,7 +25,7 @@ class Shared extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: $this->data['inviterName'] . ' shared an hour estimate with you',
+            subject: $this->data['inviterName'].' shared an hour estimate with you',
         );
     }
 

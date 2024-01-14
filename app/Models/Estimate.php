@@ -20,7 +20,6 @@ class Estimate extends Model
     {
         return $this->hasMany(EstimateSection::class, 'estimate_id')->orderBy('position');
     }
-    
 
     public function sectionRows()
     {

@@ -2,14 +2,13 @@
 
 namespace App\Livewire\Components\Modal;
 
+use App\Mail\Estimate\Shared;
 use App\Models\EstimateShare;
+use App\Models\User;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Usernotnull\Toast\Concerns\WireToast;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\Estimate\Shared;
-use App\Models\User;
-
 
 class ShareManage extends Component
 {
