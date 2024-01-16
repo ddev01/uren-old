@@ -1,8 +1,8 @@
-<div class="{{ $attributes['class'] }}">
+<div {{ $attributes->merge(['class' => '']) }}>
     @if ($label)
         <label class="" for="{{ $name }}">{{ $label }}</label>
     @endif
-    <div class="relative h-full">
+    <div class="relative">
         @if ($prefix ?? false)
             <div class="absolute left-[8px] top-0">
                 {{ $prefix }}

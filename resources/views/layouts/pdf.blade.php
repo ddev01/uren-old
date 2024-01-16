@@ -118,6 +118,15 @@
         .information table {
             padding: 10px;
         }
+        @page {
+        padding-top: {{ config('paper.A4.margin.top') }}pt;
+        padding-bottom: {{ config('paper.A4.margin.bottom') }}pt;
+        }
+
+        @page :first {
+            padding-top: 0pt;
+            padding-bottom: 0pt;
+        }
     </style>
 
     @yield('styles')

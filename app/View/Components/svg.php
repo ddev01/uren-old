@@ -6,7 +6,7 @@ use Illuminate\View\Component;
 
 class Svg extends Component
 {
-    public $svg;
+    public $icon;
 
     public $class;
 
@@ -15,9 +15,9 @@ class Svg extends Component
      *
      * @return void
      */
-    public function __construct($svg, $class = '')
+    public function __construct($icon, $class = '')
     {
-        $this->svg = $svg;
+        $this->icon = $icon;
         $this->class = $class;
     }
 
@@ -28,7 +28,7 @@ class Svg extends Component
      */
     public function render()
     {
-        $path = public_path('svgs/'.$this->svg.'.svg');
+        $path = public_path('svgs/'.$this->icon.'.svg');
 
         if (file_exists($path)) {
             $svgContent = file_get_contents($path);

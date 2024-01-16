@@ -1,4 +1,4 @@
-<header class="bg-gray-800 p-4 h-14">
+<header class="bg-gray-800 p-4">
     <nav>
         <ul class="gap-4 flexb">
             <!-- Authentication Links -->
@@ -7,7 +7,12 @@
                     {{ __('Estimate') }}
                 </a>
             </li>
-            <div>
+            <div class="flexy gap-4">
+                    <li class="flexc" x-data="themeSwitcher()" x-init="loadTheme()">
+                        <button @click="toggleTheme()">
+                            <x-svg class="h-6 w-6 text-white dark:text-black" icon="moon" />
+                        </button>
+                    </li>
                 @guest
                     @if (Route::has('login'))
                         <li class="nav-item inline-block">
@@ -21,22 +26,7 @@
                         </li>
                     @endif
                 @else
-                    <li class="">
-                        {{-- <a>
-                        {{ Auth::user()->name }}
-                    </a> --}}
-                        
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form class="d-none" id="logout-form" action="{{ route('logout') }}" method="POST">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
+                    <x-layouts.profile-dropdown-nav />
                 @endguest
             </div>
         </ul>

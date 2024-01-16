@@ -1,5 +1,5 @@
-<div class="row-wrapper gap-2 bg-gray-600 p-3 flexy" data-position="">
-    <div class="w-[125px]">
+<div class="row-wrapper h-full gap-2 bg-gray-600 p-3 flex" x-data="{tallestInput: 0}">
+    <div class="w-[125px] h-full">
         <x-input.select name="row-type" wire:model.lazy="type" x-on:change="sectionTotal(); tableTotal();">
             <option value="default">Default</option>
             <option value="optional">Optional</option>
@@ -9,7 +9,7 @@
             <option value="yearly">Yearly</option>
         </x-input.select>
     </div>
-    <div class="w-[60px]">
+    <div class="w-[60px] h-full">
         <x-input.number
             class="row-hours"
             name="row-hours"
@@ -18,14 +18,14 @@
             wire:model.lazy="displayHours"
         />
     </div>
-    <div class="flex-1">
-        <x-input.input name="row-name" wire:model.lazy="name" />
+    <div class="flex-1 h-full">
+        <x-input.estimate.textarea name="row-name" wire:model.lazy="name" />
     </div>
-    <div class="flex-1">
-        <x-input.input name="row-description" wire:model.lazy="description" />
+    <div class="flex-1 h-full">
+        <x-input.estimate.textarea name="row-description" wire:model.lazy="description" />
     </div>
     <div class="flex-1" x-show="showNotes">
-        <x-input.input name="row-notes" wire:model.lazy="note" />
+        <x-input.estimate.textarea name="row-notes" wire:model.lazy="note" />
     </div>
     <div class="w-[90px] p-1 flexb">
         <i class="fa-solid fa-square-minus" wire:click="rowDelete"></i>

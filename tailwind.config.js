@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
     darkMode: 'class',
-    content: ['./resources/views/**/*.blade.php', './App/View/**/*.php', './App/Livewire/**/*.php', './resources/js/**/*.js', './resources/css/**/*.css', './vendor/usernotnull/tall-toasts/config/**/*.php', './vendor/usernotnull/tall-toasts/resources/views/**/*.blade.php'],
+    content: ['./resources/views/**/*.blade.php', './App/View/**/*.php', './App/Livewire/**/*.php', './resources/js/**/*.js', './resources/css/**/*.css', './vendor/usernotnull/tall-toasts/config/**/*.php', './vendor/usernotnull/tall-toasts/resources/views/**/*.blade.php', 'public/svgs/**/*.svg'],
 
     theme: {
         extend: {
@@ -34,6 +34,7 @@ export default {
     },
 
     plugins: [
+        require('flowbite/plugin'),
         function ({ addUtilities }) {
             const newFlexItems = {
                 '.flexc': {

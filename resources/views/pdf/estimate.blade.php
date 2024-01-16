@@ -90,11 +90,12 @@
                 </div>
             </td>
             <td align="center">
-                {{-- <img src="/path/to/logo.png" alt="Logo" width="64" class="logo"/> --}}
+                <img style="" src="{{ Auth::user()->getAvatar() }}" alt="Logo" width="64" class="logo"/>
             </td>
             <td align="right" style="width: 40%; line-height: 175%;">
-                
+                <div>
                     {{ __('Hourly rate') }}: {{ $estimate->hourly_rate }}
+                </div>
                 
             </td>
         </tr>

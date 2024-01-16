@@ -7,6 +7,16 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link type="image/x-icon" href="{{ asset('images/favicon.ico') }}" rel="icon">
+    <script>
+        // Set theme ASAP to avoid FOUC
+        (function() {
+            var theme = localStorage.getItem('theme');
+            var isDarkMode = theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            if (isDarkMode) {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
     <script src="https://kit.fontawesome.com/d06677cf57.js" crossorigin="anonymous"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles

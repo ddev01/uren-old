@@ -48,3 +48,7 @@ button{
         @apply opacity-90 scale-110;
     }
 }
+
+.estimate-textarea{
+    @apply resize-none;
+}
