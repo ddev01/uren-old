@@ -1,9 +1,9 @@
-<header class="bg-gray-800 p-4">
+<header class="bg-white dark:bg-gray-800 p-4 text-sm font-medium text-gray-900 dark:text-gray-300  ">
     <nav>
         <ul class="gap-4 flexb">
             <!-- Authentication Links -->
             <li>
-                <a href="{{ route('estimate.index') }}" wire:navigate>
+                <a class="dark:hover:text-blue-500 hover:text-blue-600" href="{{ route('estimate.index') }}" wire:navigate>
                     {{ __('Estimate') }}
                 </a>
             </li>

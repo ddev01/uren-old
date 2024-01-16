@@ -1,7 +1,8 @@
 <x-user.container>
-    <div class="flex gap-6">
-        <div class="relative w-fit h-fit flex-shrink-0">
-            <img class="w-[128px] h-[128px] rounded-lg object-contain bg-gray-900 box-content p-4" src="{{ Auth::user()->getAvatar() }}" alt="Profile Photo">
+    <div class="grid grid-cols-3 gap-4">
+        <div class="flex-shrink-0  shadow-primary p-8 rounded-lg bg-white">
+            <div class="w-fit h-fit relative">
+                <img class="w-[128px] h-[128px] rounded-lg object-contain bg-gray-800 box-content p-4" src="{{ Auth::user()->getAvatar() }}" alt="Profile Photo">
                 <input type="file" wire:model="avatar" id="avatar" style="display:none;"
                 x-on:livewire-upload-finish="$wire.uploadAvatar()">
             </form>
@@ -13,8 +14,9 @@
             @error('avatar')
                 <span class="error text-red-500">{{ $message }}</span>
             @enderror
+            </div>
         </div>
-        <form class="p-4 bg-gray-900 w-full rounded-lg space-y-5" wire:submit.prevent='updateProfile'>
+        <form class="p-8 bg-white dark:bg-gray-800 w-full rounded-lg space-y-5 col-span-2  shadow-primary" wire:submit.prevent='updateProfile'>
             <x-flowbite.inputs.input placeholder="{{ __('Enter your first name') }}" icon="user-2" name="firstName" label="{{ __('Firstname') }}" wire:model="firstName" >
                 {{-- @slot('helper')
                     This is a helper <a href="#">Helper link</a>

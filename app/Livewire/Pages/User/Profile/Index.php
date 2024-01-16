@@ -54,7 +54,7 @@ class Index extends Component
         $user->company_website = $this->companyWebsite ?? $user->company_website;
         $user->save();
         
-        toast()->success('Profile', __('Profile updated successfully'))->push();
+        toast()->success('Profile updated successfully', __('Profile'))->push();
     }
 
     public function render()

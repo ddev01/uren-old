@@ -8,7 +8,7 @@
     "sortTailwindcssClasses": true,
     "wrapAttributes": "force-expand-multiline",
     "sortHtmlAttributes": "code-guide",
-    "wrapAttributesMinAttrs": 5,
+    "wrapAttributesMinAttrs": 1337,
     "endWithNewLine": true,
     "plugins": ["@shufo/prettier-plugin-blade", "@prettier/plugin-php", "prettier-plugin-tailwindcss"],
     "overrides": [

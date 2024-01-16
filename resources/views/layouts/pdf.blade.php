@@ -40,9 +40,11 @@
             font-weight: normal;
             src: url({{ storage_path('fonts/calibri/Calibri.ttf') }}) format('truetype');
         }
-        #oogabooga{
+
+        #oogabooga {
             text-align: right;
         }
+
         @font-face {
             font-family: 'Calibri';
             font-style: normal;
@@ -63,9 +65,11 @@
             font-weight: bold;
             src: url({{ storage_path('fonts/calibri/Calibri Bold Italic.ttf') }}) format('truetype');
         }
-        div.h5{
+
+        div.h5 {
             font-size: 7pt;
         }
+
         html,
         body {
             padding: 0;
@@ -74,7 +78,7 @@
         }
 
         body {
-            
+
             /* padding-top: {{ config('paper.A4.margin.top') }}pt;
             padding-bottom: {{ config('paper.A4.margin.bottom') }}pt; */
             font-family: 'Calibri';
@@ -89,7 +93,8 @@
             padding-top: {{ config('paper.A4.margin.right') }}pt;
             padding-bottom: {{ config('paper.A4.margin.bottom') }}pt;
         }
-        #header{
+
+        #header {
             padding-left: {{ config('paper.A4.margin.left') }}pt;
             padding-right: {{ config('paper.A4.margin.right') }}pt;
             /* padding-top: {{ config('paper.A4.margin.top') }}pt; */
@@ -102,25 +107,30 @@
             border-spacing: 0;
             border-collapse: separate;
         }
+
         .information {
             background-color: #60A7A6;
             color: #FFF;
-            
+
         }
-        a.footer-link{
+
+        a.footer-link {
             color: #FFF;
             text-decoration: none;
             text-decoration: underline;
         }
+
         .information .logo {
             margin: 5px;
         }
+
         .information table {
             padding: 10px;
         }
+
         @page {
-        padding-top: {{ config('paper.A4.margin.top') }}pt;
-        padding-bottom: {{ config('paper.A4.margin.bottom') }}pt;
+            padding-top: {{ config('paper.A4.margin.top') }}pt;
+            padding-bottom: {{ config('paper.A4.margin.bottom') }}pt;
         }
 
         @page :first {
@@ -136,17 +146,18 @@
     <div id="content">
         @yield('content')
     </div>
-    <div  class="information" style="position: absolute; bottom: 0; width: 100%;">
+    <div class="information" style="position: absolute; bottom: 0; width: 100%;">
         <table width="100%">
             <tr>
                 <td align="left" style="width: 50%;">
-                    &copy; {{ date('Y') }} <a class="footer-link" href="{{ config('app.url') }}" target="_">{{ config('app.name') }}</a> - {{ __('All rights reserved') }}.
+                    &copy; {{ date('Y') }} <a class="footer-link" href="{{ config('app.url') }}"
+                        target="_">{{ config('app.name') }}</a> - {{ __('All rights reserved') }}.
                 </td>
                 <td align="right" style="width: 50%;">
                     {{-- Slogan --}}
                 </td>
             </tr>
-    
+
         </table>
     </div>
 

@@ -8,7 +8,6 @@ use Illuminate\View\Component;
 
 class Button extends Component
 {
-    public $href;
     public $elementType;
     public $var;
 
@@ -17,9 +16,8 @@ class Button extends Component
         'small' => 'py-1 px-1',
     ];
 
-    public function __construct($href = false, $var = 'default')
+    public function __construct(public $href = false, $var = 'default')
     {
-        $this->href = $href;
         $this->elementType = $href ? 'a' : 'button';
         $this->var = isset($this->vars[$var]) ? $this->vars[$var] : $this->vars['default'];
     }

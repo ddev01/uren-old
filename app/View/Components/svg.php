@@ -7,32 +7,17 @@ use Illuminate\View\Component;
 class Svg extends Component
 {
     public $icon;
-
     public $class;
-
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
     public function __construct($icon, $class = '')
     {
         $this->icon = $icon;
         $this->class = $class;
     }
-
-    /**
-     * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\Contracts\View\View|\Closure|string
-     */
     public function render()
     {
         $path = public_path('svgs/'.$this->icon.'.svg');
-
         if (file_exists($path)) {
             $svgContent = file_get_contents($path);
-
             // Only inject the class attribute into the SVG content if $class is not empty
             if (! empty($this->class)) {
                 $svgContent = preg_replace('/<svg /', '<svg class="'.$this->class.'" ', $svgContent, 1);
@@ -40,7 +25,6 @@ class Svg extends Component
 
             return $svgContent;
         }
-
         return ''; // Return empty string if file doesn't exist
     }
 }

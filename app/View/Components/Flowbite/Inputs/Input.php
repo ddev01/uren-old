@@ -9,14 +9,9 @@ use Illuminate\View\Component;
 class Input extends Component
 {
     public $name;
-
     public $label;
-
     public $icon;
-
     public $helper;
-    
-
     public function __construct($name, $label = false, $icon = false, $helper = false)
     {
         $this->name = $name;
