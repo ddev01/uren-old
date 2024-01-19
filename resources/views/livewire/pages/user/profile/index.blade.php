@@ -1,15 +1,16 @@
 <x-user.container>
     <div class="grid grid-cols-3 gap-4">
-        <div class="flex-shrink-0  shadow-primary p-8 rounded-lg bg-white">
+        <div class="flex-shrink-0  shadow-primary p-8 rounded-lg bg-white dark:bg-gray-800">
             <div class="w-fit h-fit relative">
-                <img class="w-[128px] h-[128px] rounded-lg object-contain bg-gray-800 box-content p-4" src="{{ Auth::user()->getAvatar() }}" alt="Profile Photo">
+                <img class="size-32 rounded-lg object-contain bg-gray-800 box-content p-4" src="{{ Auth::user()->getAvatar() }}" alt="Profile Photo">
                 <input type="file" wire:model="avatar" id="avatar" style="display:none;"
                 x-on:livewire-upload-finish="$wire.uploadAvatar()">
             </form>
-            <label for="avatar" class="cursor-pointer text-white flexc absolute bg-black w-8 rounded-lg p-1 h-8  bottom-0 right-0 translate-y-1/3 translate-x-1/3">
-                <div class="flexc w-6 h-6">
-                    <x-svg icon="pencil" />
-                </div>
+            <label for="avatar" class="text-white">
+                <x-flowbite.button>
+                    <x-svg class="text-white size-4" icon="upload" />
+                    {{ __('Change image') }}
+                </x-flowbite.button>
             </label>
             @error('avatar')
                 <span class="error text-red-500">{{ $message }}</span>

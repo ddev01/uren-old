@@ -9,7 +9,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="inline-flex gap-2 items-center px-4 py-3 rounded-lg hover:text-gray-900 bg-white shadow-primary hover:bg-gray-100 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
+                <a href="{{ route('dashboard') }}" wire:navigate class="inline-flex gap-2 items-center px-4 py-3 rounded-lg  w-full {{ Route::is('dashboard')  ? 'dark:bg-blue-600 bg-blue-700 text-white' : 'hover:text-gray-900 bg-white shadow-primary hover:bg-gray-100 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white'}}">
                     <x-svg icon="dashboard" />
                     Dashboard
                 </a>
@@ -35,7 +35,7 @@
                 </ul>
             </li>
             <li>
-                <a href="#" class="inline-flex gap-2 items-center px-4 py-3 rounded-lg hover:text-gray-900 bg-white shadow-primary hover:bg-gray-100 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
+                <a href="{{ route('contact') }}" wire:navigate class="inline-flex gap-2 items-center px-4 py-3 rounded-lg  w-full {{ Route::is('contact')  ? 'dark:bg-blue-600 bg-blue-700 text-white' : 'hover:text-gray-900 bg-white shadow-primary hover:bg-gray-100 w-full dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white'}}">
                     <x-svg icon="contact" />
                     Contact
                 </a>

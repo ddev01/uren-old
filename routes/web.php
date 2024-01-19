@@ -27,6 +27,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/user/settings', App\Livewire\Pages\User\Settings\Index::class)->name('settings');
     Route::get('/user/settings/general', App\Livewire\Pages\User\Settings\General\IndexGeneral::class)->name('settings.general');
     Route::get('/user/settings/estimate', App\Livewire\Pages\User\Settings\Estimate\IndexEstimate::class)->name('settings.estimate');
+    Route::get('/user/contact', App\Livewire\Pages\User\Contact\IndexContact::class)->name('contact');
+    Route::get('/user/dashboard', App\Livewire\Pages\User\Dashboard\IndexDashboard::class)->name('dashboard');
 
     // Route::get('/estimate/{estimate}', App\Livewire\Pages\Estimate\Edit::class)->name('estimate.edit');
 });

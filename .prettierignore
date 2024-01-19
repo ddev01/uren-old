@@ -13,3 +13,4 @@ package.json
 readme.md
 
 resources/views/components/button.blade.php
+resources/views/components/flowbite

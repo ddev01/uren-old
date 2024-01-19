@@ -22,6 +22,7 @@
     },
     "dependencies": {
         "@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",
-        "flowbite": "^2.2.1"
+        "flowbite": "^2.2.1",
+        "tailwindcss-group-modifier-plugin": "^0.1.1"
     }
 }

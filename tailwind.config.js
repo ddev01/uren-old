@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import groupModifierPlugin from 'tailwindcss-group-modifier-plugin';
+
 export default {
     darkMode: 'class',
     content: ['./resources/views/**/*.blade.php', './App/View/**/*.php', './App/Livewire/**/*.php', './resources/js/**/*.js', './resources/css/**/*.css', './vendor/usernotnull/tall-toasts/config/**/*.php', './vendor/usernotnull/tall-toasts/resources/views/**/*.blade.php', 'public/svgs/**/*.svg'],
@@ -35,6 +37,7 @@ export default {
     },
 
     plugins: [
+        groupModifierPlugin({ prefix: 'g' }),
         require('flowbite/plugin'),
         function ({ addUtilities }) {
             const newFlexItems = {
@@ -81,12 +84,19 @@ export default {
             };
             addUtilities(newFlexItems);
         },
-        function ({ addVariant, e }) {
-            addVariant('placeholder-shown', ({ modifySelectors, separator }) => {
-                modifySelectors(({ className }) => {
-                    return `.${e(`placeholder-shown${separator}${className}`)}:placeholder-shown`;
-                });
-            });
-        },
+        // function ({ addVariant, e }) {
+        //     addVariant('placeholder-shown', ({ modifySelectors, separator }) => {
+        //         modifySelectors(({ className }) => {
+        //             return `.${e(`placeholder-shown${separator}${className}`)}:placeholder-shown`;
+        //         });
+        //     });
+        // },
+        // function ({ addVariant, e }) {
+        //     addVariant('placeholder-hidden', ({ modifySelectors, separator }) => {
+        //         modifySelectors(({ className }) => {
+        //             return `.${e(`placeholder-hidden${separator}${className}`)}:not(:placeholder-shown)`;
+        //         });
+        //     });
+        // },
     ],
 };

@@ -13,16 +13,16 @@
         </div>
         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="avatarButton">
             <li>
-                <a class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" href="{{ route('profile') }}" wire:navigate>Profile</a>
+                <a class="block px-4 py-2 {{ Route::is('profile') ? 'dark:bg-blue-600 bg-blue-700 text-white' : 'hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white' }}" href="{{ route('profile') }}" wire:navigate>Profile</a>
             </li>
             <li>
-                <a class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" href="#">Dashboard</a>
+                <a class="block px-4 py-2 {{ Route::is('dashboard') ? 'dark:bg-blue-600 bg-blue-700 text-white' : 'hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white' }}" href="{{ route('dashboard') }}">Dashboard</a>
             </li>
             <li>
-                <a class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" href="#">Settings</a>
+                <a class="block px-4 py-2 {{ Route::is('settings.*') ? 'dark:bg-blue-600 bg-blue-700 text-white' : 'hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white' }}" href="{{ route('settings') }}">Settings</a>
             </li>
             <li>
-                <a class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" href="#">Earnings</a>
+                <a class="block px-4 py-2 {{ Route::is('contact') ? 'dark:bg-blue-600 bg-blue-700 text-white' : 'hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white' }}" href="{{ route('contact') }}">Contact</a>
             </li>
         </ul>
         <div class="py-1">
