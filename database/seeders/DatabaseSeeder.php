@@ -21,6 +21,11 @@ class DatabaseSeeder extends Seeder
             'email' => 'dev@outlawz.nl',
             'password' => Hash::make('admin'),
         ]);
+        // Create 10 estimates for the developer user
+        Estimate::factory()->count(42)->create([
+            'user_id' => $dev->id,
+            // ... other attributes, if needed ...
+        ]);
         \App\Models\User::factory()->create([
             'email' => 'test@test.nl',
             'password' => Hash::make('test'),

@@ -50,6 +50,7 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
                         <span class="font-medium">{{ $paginator->total() }}</span>
                         <span>{!! __('results') !!}</span>
                     </p>
+                    
                 </div>
 
                 <div>

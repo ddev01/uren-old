@@ -5,40 +5,36 @@ namespace App\Livewire\Pages\Estimate;
 use Carbon\Carbon;
 use Livewire\Component;
 use App\Models\Estimate;
+use Livewire\WithPagination;
 use App\Models\EstimateSection;
 use App\Models\EstimateSectionRow;
 use Usernotnull\Toast\Concerns\WireToast;
 
 class Index extends Component
 {
-    use WireToast;
+    use WireToast, WithPagination;
 
-    public $estimates;
+    protected $paginationTheme = 'flowbite';
+
     public $name;
     public $dateFilter = '2';
     public $searchFilter;
-    public $sortBy;
     public $sortColumn = 'created_at';
     public $sortDirection = 'desc';
 
     public function mount()
     {
-        $this->estimates = Estimate::where('user_id', auth()->id())->get()->sortByDesc('created_at');
-        $this->filterResults(); // Initialize with filtered results
+        $this->resetPage(); // Reset the pagination after updating the filters
     }
-    // public function updatedSearchFilter()
-    // {
-    //     $this->filterResults(); // Call this method whenever searchFilter changes
-    // }
-    // public function updatedDateFilter()
-    // {
-    //     // dd($this->dateFilter);
 
-    //     $this->filterResults(); // Call this method whenever dateFilter changes
-    // }
-    public function update($name, $value)
+    public function updatingSearchFilter()
     {
-        dd($name, $value);
+        $this->resetPage();
+    }
+
+    public function updatingDateFilter()
+    {
+        $this->resetPage();
     }
 
     public function setSort($column)
@@ -50,7 +46,7 @@ class Index extends Component
         }
 
         $this->sortColumn = $column;
-        $this->filterResults();
+        $this->resetPage();
     }
 
     public function getCurrentFilterLabel()
@@ -66,7 +62,7 @@ class Index extends Component
         return $labels[$this->dateFilter] ?? 'Unknown';
     }
 
-    private function filterResults()
+    public function getEstimatesProperty()
     {
         $query = Estimate::where('user_id', auth()->id());
 
@@ -89,15 +85,10 @@ class Index extends Component
 
         // Apply search filter
         if (!empty($this->searchFilter)) {
-            $query->where(function ($subQuery) {
-                $subQuery->where('name', 'like', '%' . $this->searchFilter . '%')
-                         // Add other fields you want to search by
-                         // ->orWhere('other_field', 'like', '%' . $this->searchFilter . '%')
-                         ;
-            });
+            $query->where('name', 'like', '%' . $this->searchFilter . '%');
         }
-        $query->orderBy($this->sortColumn, $this->sortDirection);
-        $this->estimates = $query->get();
+
+        return $query->orderBy($this->sortColumn, $this->sortDirection)->paginate(10);
     }
 
     public function create()
@@ -116,7 +107,6 @@ class Index extends Component
                 'estimate_section_id' => $section->id,
             ]);
 
-            $this->estimates = Estimate::all();
 
             toast()
                 ->success('Created successfully', 'Estimate')
@@ -141,18 +131,15 @@ class Index extends Component
                 ->danger('Something went wrong', 'Estimate')
                 ->push();
         }
-        $this->estimates = Estimate::all();
     }
 
-   
+
     
 
     public function render()
     {
-        $results = $this->filterResults();
         return view('livewire.pages.estimate.index', [
-            'estimates' => $this->estimates,
-            'results' => $results,
+            'estimates' => $this->estimates // Access the computed property here
         ]);
     }
 }

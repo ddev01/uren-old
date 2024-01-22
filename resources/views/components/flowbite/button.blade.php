@@ -1,3 +1,3 @@
-<{{ $elementType }} class="{{ $attributes->get('class') }} {{ $base }} {{ $color }} {{ $size }}" {{ $attributes }} >
+<{{ $elementType }} class="{{ $attributes->get('class') }} {{ $base }} {{ $color }} {{ $size }}" {{ $attributes }} {!! $href ? 'href="' . $href . '"' : '' !!}>
     {{ $slot }}
 </{{ $elementType }}>
