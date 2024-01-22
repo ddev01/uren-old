@@ -17,6 +17,9 @@ class Index extends Component
     public $name;
     public $dateFilter = '3';
     public $searchFilter;
+    public $sortBy;
+    public $sortColumn = 'created_at';
+    public $sortDirection = 'desc';
 
     public function mount()
     {
@@ -36,6 +39,18 @@ class Index extends Component
     public function update($name, $value)
     {
         dd($name, $value);
+    }
+
+    public function setSort($column)
+    {
+        if ($this->sortColumn === $column) {
+            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            $this->sortDirection = 'asc';
+        }
+
+        $this->sortColumn = $column;
+        $this->filterResults();
     }
 
     private function filterResults()
@@ -68,8 +83,8 @@ class Index extends Component
                          ;
             });
         }
-
-        $this->estimates = $query->get()->sortByDesc('created_at');
+        $query->orderBy($this->sortColumn, $this->sortDirection);
+        $this->estimates = $query->get();
     }
 
     public function create()
