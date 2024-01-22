@@ -64,10 +64,6 @@
                                 <th scope="col" class="px-6 py-3">
                                     <div class="flexy gap-2 cursor-pointer w-fit">
                                         Action
-                                        <div>
-                                            <x-svg class="w-4 h-4 -mb-3" icon="sort-up" />
-                                            <x-svg class="w-4 h-4 -mt-2" icon="sort-down" />
-                                        </div>
                                     </div>
                                 </th>
                             </tr>

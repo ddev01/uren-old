@@ -15,7 +15,7 @@ class Index extends Component
 
     public $estimates;
     public $name;
-    public $dateFilter = '3';
+    public $dateFilter = '2';
     public $searchFilter;
     public $sortBy;
     public $sortColumn = 'created_at';
@@ -51,6 +51,19 @@ class Index extends Component
 
         $this->sortColumn = $column;
         $this->filterResults();
+    }
+
+    public function getCurrentFilterLabel()
+    {
+        $labels = [
+            '0' => 'Last day',
+            '1' => 'Last 7 days',
+            '2' => 'Last 30 days',
+            '3' => 'Last year',
+            '4' => 'All time',
+        ];
+
+        return $labels[$this->dateFilter] ?? 'Unknown';
     }
 
     private function filterResults()
