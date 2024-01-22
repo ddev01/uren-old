@@ -8,8 +8,9 @@
             </li>
             <div class="flexy gap-4">
                     <li class="flexc" x-data="themeSwitcher()" x-init="loadTheme()">
-                        <button @click="toggleTheme()" class="p-2 rounded-sm bg-gray-800/75">
-                            <x-svg class="h-6 w-6 text-white dark:text-black" icon="moon" />
+                        <button @click="toggleTheme()" class="p-2 rounded-sm ">
+                            <div><x-svg class="h-6 w-6 text-gray-600 dark:text-gray-400 dark:hidden" icon="moon" /></div>
+                            <div><x-svg class="h-6 w-6 text-gray-600 dark:text-gray-400 hidden dark:block" icon="sun" /></div>
                         </button>
                     </li>
                 @guest

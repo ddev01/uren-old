@@ -33,12 +33,15 @@ export default {
                 9: '9',
                 '-9': '-9',
             },
+            ransitionTimingFunction: {
+                button: 'cubic-bezier(0.4, 0, 0.2, 1)',
+            },
         },
     },
 
     plugins: [
+        require('flowbite/plugin', {tooltips: false, charts: false}),
         groupModifierPlugin({ prefix: 'g' }),
-        require('flowbite/plugin'),
         function ({ addUtilities }) {
             const newFlexItems = {
                 '.flexc': {

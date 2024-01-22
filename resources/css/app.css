@@ -5,16 +5,16 @@
 @tailwind utilities;
 
 * {
-    @apply m-0 p-0;
+    @apply m-0 p-0 box-border;
 }
 
 body {
-    @apply overflow-x-hidden font-geist text-white min-h-screen min-w-max;
+    /* @apply ; */
 }
 
-* {
-    @apply box-border;
-}
+/* a {
+    @apply font-medium text-blue-600 hover:underline dark:text-blue-500;
+} */
 
 .no-spinners::-webkit-inner-spin-button,
 .no-spinners::-webkit-outer-spin-button {
@@ -37,18 +37,16 @@ body {
     scrollbar-width: none;
 }
 
-
-
-input[type="checkbox"]:checked::after {
-    @apply absolute content-[''] w-[24px] h-[24px] rounded-sm bg-green-400/75 flexc bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2;
-}
-button{
-    @apply transition-all cursor-pointer;
-    &:hover{
-        @apply opacity-90 scale-110;
+/* input[type='checkbox']:checked::after {
+    @apply absolute bottom-1/2 right-1/2 h-[24px] w-[24px] translate-x-1/2 translate-y-1/2 rounded-sm bg-green-400/75 content-[''] flexc;
+} */
+/* button {
+    @apply cursor-pointer transition-all;
+    &:hover {
+        @apply scale-110 opacity-90;
     }
-}
+} */
 
-.estimate-textarea{
+.estimate-textarea {
     @apply resize-none;
 }

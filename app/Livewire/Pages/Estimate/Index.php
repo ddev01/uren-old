@@ -2,10 +2,11 @@
 
 namespace App\Livewire\Pages\Estimate;
 
+use Carbon\Carbon;
+use Livewire\Component;
 use App\Models\Estimate;
 use App\Models\EstimateSection;
 use App\Models\EstimateSectionRow;
-use Livewire\Component;
 use Usernotnull\Toast\Concerns\WireToast;
 
 class Index extends Component
@@ -13,8 +14,63 @@ class Index extends Component
     use WireToast;
 
     public $estimates;
-
     public $name;
+    public $dateFilter = '3';
+    public $searchFilter;
+
+    public function mount()
+    {
+        $this->estimates = Estimate::where('user_id', auth()->id())->get()->sortByDesc('created_at');
+        $this->filterResults(); // Initialize with filtered results
+    }
+    // public function updatedSearchFilter()
+    // {
+    //     $this->filterResults(); // Call this method whenever searchFilter changes
+    // }
+    // public function updatedDateFilter()
+    // {
+    //     // dd($this->dateFilter);
+
+    //     $this->filterResults(); // Call this method whenever dateFilter changes
+    // }
+    public function update($name, $value)
+    {
+        dd($name, $value);
+    }
+
+    private function filterResults()
+    {
+        $query = Estimate::where('user_id', auth()->id());
+
+        // Apply date filter
+        switch ($this->dateFilter) {
+            case '0':
+                $query->where('created_at', '>=', Carbon::now()->subDay());
+                break;
+            case '1':
+                $query->where('created_at', '>=', Carbon::now()->subDays(7));
+                break;
+            case '2':
+                $query->where('created_at', '>=', Carbon::now()->subDays(30));
+                break;
+            case '3':
+                $query->where('created_at', '>=', Carbon::now()->subYear());
+                break;
+            // No default case needed for 'all time' as it doesn't filter by date
+        }
+
+        // Apply search filter
+        if (!empty($this->searchFilter)) {
+            $query->where(function ($subQuery) {
+                $subQuery->where('name', 'like', '%' . $this->searchFilter . '%')
+                         // Add other fields you want to search by
+                         // ->orWhere('other_field', 'like', '%' . $this->searchFilter . '%')
+                         ;
+            });
+        }
+
+        $this->estimates = $query->get()->sortByDesc('created_at');
+    }
 
     public function create()
     {
@@ -60,15 +116,15 @@ class Index extends Component
         $this->estimates = Estimate::all();
     }
 
-    public function mount()
-    {
-        $this->estimates = Estimate::where('user_id', auth()->id())->get();
-    }
+   
+    
 
     public function render()
     {
+        $results = $this->filterResults();
         return view('livewire.pages.estimate.index', [
             'estimates' => $this->estimates,
+            'results' => $results,
         ]);
     }
 }

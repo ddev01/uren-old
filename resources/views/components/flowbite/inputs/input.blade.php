@@ -1,11 +1,11 @@
-<div class="w-full">
+<div class="w-full" x-data="{ clearInput: function () { this.$refs.inputElement.value = ''; @this.set('{{ $name }}', ''); } }">
     @if ($label)
         <label for="{{ $name }}"
             class="mb-2 block text-sm font-medium 
         @error($name) text-red-700 dark:text-red-500 @else text-gray-900 dark:text-white @enderror
     ">{{ $label }}</label>
     @endif
-    <div class="flex ">
+    <div class="flex">
         @if ($icon)
             <label for="{{ $name }}"
                 class="
@@ -17,7 +17,7 @@
         @endif
         
         <div class="relative w-full">
-            <input {{ $attributes }} id="{{ $name }}" type="text"
+            <input {{ $attributes }} id="{{ $name }}" type="text" x-ref="inputElement"
                 class="
                 block w-full min-w-0 flex-1  border bg-gray-50 p-2.5 text-sm text-gray-900 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 peer  pl-2.5
                 {{ $icon ? 'rounded-e-lg' : 'rounded-lg' }}
@@ -45,6 +45,22 @@
                 <div
                     class="absolute top-1/2 -translate-y-1/2 right-4 h-4 w-4 text-gray-400 {{ $suffixFade ? 'transition-opacity duration-200 ease-in-out peer-[&:not(:placeholder-shown)]:g-[opacity-0,pointer-events-none]' : '' }} ">
                     <x-svg class="h-4 w-4" icon="{{ $suffix }}" />
+                </div>
+            @endif
+            @if ($clear)
+                <div class="absolute top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 transition-opacity duration-200 ease-in-out opacity-0 pointer-events-none peer-[&:not(:placeholder-shown)]:g-[opacity-100,pointer-events-auto]
+                @if($suffix)
+                    @if($suffixFade)
+                        right-4
+                    @else
+                        right-10
+                    @endif
+                @else
+                    right-4
+                @endif
+                " 
+                @click="clearInput()">
+                    <x-svg class="h-4 w-4 cursor-pointer" icon="x"  />
                 </div>
             @endif
         </div>

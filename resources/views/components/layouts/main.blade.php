@@ -22,7 +22,7 @@
     @livewireStyles
 </head>
 
-<body x-data="{ bodyScroll: true }" :class="{ 'overflow-y-hidden': !bodyScroll }" class="bg-gray-50 dark:bg-gray-900 min-h-[calc(100vh-56px)]">
+<body x-data="{ bodyScroll: true }" :class="{ 'overflow-y-hidden': !bodyScroll }" class="bg-gray-50 dark:bg-gray-900 overflow-x-hidden font-geist text-black dark:text-white min-h-[100dvh] min-w-max">
     <livewire:toasts />
     @yield('main')
     @livewireScripts
