@@ -1,6 +1,6 @@
 <li class="relative" x-data="{open:false}">
     <img
-        class="h-8 w-8 box-content p-2 bg-gray-900 cursor-pointer rounded-lg object-contain"
+        class="h-8 w-8 box-content p-2  cursor-pointer rounded-lg object-contain"
         src="{{ Auth::user()->getAvatar() }}"
         type="button"
         alt="User dropdown"

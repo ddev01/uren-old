@@ -37,7 +37,7 @@
                                 </th>
                                 <th class="gap-2 px-6 py-3" scope="col">
                                     <div class="w-fit cursor-pointer gap-2 flexy" wire:click='setSort("name")'>
-                                        Estimate name
+                                        {{ __('Estimate name') }}
                                         <div>
                                             <x-svg
                                                 class="{{ $sortColumn == 'name' && $sortDirection == 'asc' ? 'text-blue-600 dark:text-blue-500' : '' }} -mb-3 h-4 w-4"
@@ -50,7 +50,7 @@
                                 </th>
                                 <th class="px-6 py-3" scope="col">
                                     <div class="w-fit cursor-pointer gap-2 flexy" wire:click='setSort("updated_at")'>
-                                        Updated at
+                                        {{ __('Updated at') }}
                                         <div>
                                             <x-svg
                                                 class="{{ $sortColumn == 'updated_at' && $sortDirection == 'asc' ? 'text-blue-600 dark:text-blue-500' : '' }} -mb-3 h-4 w-4"
@@ -63,7 +63,7 @@
                                 </th>
                                 <th class="px-6 py-3" scope="col">
                                     <div class="w-fit cursor-pointer gap-2 flexy" wire:click='setSort("created_at")'>
-                                        Created at
+                                        {{ __('Created at') }}
                                         <div>
                                             <x-svg
                                                 class="{{ $sortColumn == 'created_at' && $sortDirection == 'asc' ? 'text-blue-600 dark:text-blue-500' : '' }} -mb-3 h-4 w-4"
@@ -76,7 +76,7 @@
                                 </th>
                                 <th class="px-6 py-3" scope="col">
                                     <div class="w-fit cursor-pointer gap-2 flexy">
-                                        Action
+                                        {{ __('Actions') }}
                                     </div>
                                 </th>
                             </tr>
@@ -106,10 +106,10 @@
                                     <td class="gap-4 px-6 py-4 flexy">
                                         <x-flowbite.button href="{{ route('estimate.edit', $estimate->id) }}"
                                             color="green" wire:navigate>
-                                            Edit
+                                            {{ __('Edit') }}
                                         </x-flowbite.button>
                                         <x-flowbite.button color="red" wire:click="delete('{{ $estimate->id }}')">
-                                            Delete
+                                            {{ __('Delete') }}
                                         </x-flowbite.button>
                                     </td>
                                 </tr>

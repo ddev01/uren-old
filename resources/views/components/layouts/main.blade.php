@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <link type="image/x-icon" href="{{ asset('images/favicon.ico') }}" rel="icon">
+    <link type="image/x-icon" href="{{ asset('images/logo.png') }}" rel="icon">
     <script>
         // Set theme ASAP to avoid FOUC
         (function() {

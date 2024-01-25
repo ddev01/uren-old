@@ -11,9 +11,9 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
 @endphp
 <div>
     <span class="text-sm text-gray-700 dark:text-gray-400">
-        Showing <span class="font-semibold text-gray-900 dark:text-white">{{ $paginator->firstItem() }}</span> to <span
-            class="font-semibold text-gray-900 dark:text-white">{{ $paginator->lastItem() }}</span> of <span
-            class="font-semibold text-gray-900 dark:text-white">{{ $paginator->total() }}</span> Entries
+        {{ __('Showing') }} <span class="font-semibold text-gray-900 dark:text-white">{{ $paginator->firstItem() }}</span> {{ __('to') }} <span
+            class="font-semibold text-gray-900 dark:text-white">{{ $paginator->lastItem() }}</span> {{ __('of') }} <span
+            class="font-semibold text-gray-900 dark:text-white">{{ $paginator->total() }}</span> {{ __('results') }}
     </span>
 </div>
 <div>
@@ -25,7 +25,7 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
                     <li class="disabled" aria-disabled="true" aria-label="Previous">
                         <span
                             class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg select-none cursor-default dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
-                            Previous
+                            {{ __('Previous') }}
                         </span>
                     </li>
                 @else
@@ -33,7 +33,7 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
                         <button wire:click="previousPage" wire:loading.attr="disabled" rel="prev"
                             class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                             aria-label="Previous">
-                            Previous
+                            {{ __('Previous') }}
                         </button>
                     </li>
                 @endif
@@ -73,14 +73,14 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
                         <button wire:click="nextPage" wire:loading.attr="disabled" rel="next"
                             class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                             aria-label="Next">
-                            Next
+                            {{ __('Next') }}
                         </button>
                     </li>
                 @else
                     <li class="disabled" aria-disabled="true" aria-label="Next">
                         <span
                             class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg select-none cursor-default dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
-                            Next
+                            {{ __('Next') }}
                         </span>
                     </li>
                 @endif
