@@ -49,7 +49,7 @@
 					<x-input.input name="name" label="name" wire:model.lazy="name" />
 					<x-button href="{{ route('estimate.pdf', $estimate) }}">PDF </x-button>
 					<div class="gap-2 flexy">
-									<x-modal.primary>
+						<x-modal.primary>
 							<x-slot name="button">
 								<i class="fa-solid fa-user-plus fa-xl" :class="{ 'text-green-500': <?php echo $estimate->public == 1 ? 'true' : 'false'; ?> }"></i>
 							</x-slot>
