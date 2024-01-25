@@ -1,0 +1,4 @@
+{
+    ".blade.php": "prettier --write"
+    ".php": "./vendor/bin/pint"
+}

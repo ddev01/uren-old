@@ -1,29 +1,32 @@
 {
-    "private": true,
-    "type": "module",
-    "scripts": {
-        "dev": "vite",
-        "build": "vite build"
-    },
-    "devDependencies": {
-        "@popperjs/core": "^2.11.6",
-        "@shufo/prettier-plugin-blade": "^1.11.1",
-        "autoprefixer": "^10.4.16",
-        "axios": "^1.1.2",
-        "bootstrap": "^5.2.3",
-        "laravel-vite-plugin": "^0.8.0",
-        "postcss": "^8.4.14",
-        "prettier": "3.2.4",
-        "prettier-plugin-tailwindcss": "^0.5.5",
-        "sass": "^1.56.1",
-        "tailwindcss": "^3.1.0",
-        "vite": "^4.0.0"
-    },
-    "dependencies": {
-        "@prettier/plugin-php": "^0.21.0",
-        "@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",
-        "flowbite": "^2.2.1",
-        "prettier-plugin-tailwindcss": "^0.5.6",
-        "tailwindcss-group-modifier-plugin": "^0.1.1"
-    }
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@popperjs/core": "^2.11.6",
+    "@shufo/prettier-plugin-blade": "^1.11.1",
+    "autoprefixer": "^10.4.16",
+    "axios": "^1.1.2",
+    "bootstrap": "^5.2.3",
+    "husky": "^9.0.5",
+    "laravel-vite-plugin": "^0.8.0",
+    "lint-staged": "^15.2.0",
+    "postcss": "^8.4.14",
+    "prettier": "3.2.4",
+    "prettier-plugin-tailwindcss": "^0.5.5",
+    "sass": "^1.56.1",
+    "tailwindcss": "^3.1.0",
+    "vite": "^4.0.0"
+  },
+  "dependencies": {
+    "@prettier/plugin-php": "^0.21.0",
+    "@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",
+    "flowbite": "^2.2.1",
+    "prettier-plugin-tailwindcss": "^0.5.6",
+    "tailwindcss-group-modifier-plugin": "^0.1.1"
+  }
 }

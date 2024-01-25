@@ -10,13 +10,15 @@ class Estimate extends Model
 {
 	use HasUuids, HasFactory;
 
-	protected $fillable = ['name', 'user_id', 'hourly_rate'];
-
+	protected $fillable = ['name', 
+    'user_id', 'hourly_rate'];
 	public function user()
 	{
-		return $this->belongsTo(User::class, 'user_id');
+	return $this->belongsTo(User::class, 'user_id');
 	}
 
+
+    
 	public function sections()
 	{
 		return $this->hasMany(EstimateSection::class, 'estimate_id')->orderBy('position');
