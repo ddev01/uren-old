@@ -1,4 +1,7 @@
 {
-    ".blade.php": "prettier --write"
-    ".php": "./vendor/bin/pint"
+    ".blade.php": "prettier --write",
+    ".php": "prettier --write"
+    ".css": "prettier --write"
+    ".scss": "prettier --write"
+    ".js": "prettier --write"
 }
