@@ -8,27 +8,27 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Estimate extends Model
 {
-    use HasUuids, HasFactory;
+	use HasUuids, HasFactory;
 
-    protected $fillable = ['name', 'user_id', 'hourly_rate'];
+	protected $fillable = ['name', 'user_id', 'hourly_rate'];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
+	public function user()
+	{
+		return $this->belongsTo(User::class, 'user_id');
+	}
 
-    public function sections()
-    {
-        return $this->hasMany(EstimateSection::class, 'estimate_id')->orderBy('position');
-    }
+	public function sections()
+	{
+		return $this->hasMany(EstimateSection::class, 'estimate_id')->orderBy('position');
+	}
 
-    public function sectionRows()
-    {
-        return $this->hasManyThrough(EstimateSectionRow::class, EstimateSection::class);
-    }
+	public function sectionRows()
+	{
+		return $this->hasManyThrough(EstimateSectionRow::class, EstimateSection::class);
+	}
 
-    public function shares()
-    {
-        return $this->hasMany(EstimateShare::class, 'estimate_id');
-    }
+	public function shares()
+	{
+		return $this->hasMany(EstimateShare::class, 'estimate_id');
+	}
 }

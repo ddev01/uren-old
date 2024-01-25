@@ -6,20 +6,20 @@ use Livewire\Component;
 
 class Table extends Component
 {
-    public $estimate;
+	public $estimate;
 
-    public function updatedExecuted()
-    {
-        $this->estimate->executed = $this->executed;
-        $this->estimate->save();
-    }
+	public function updatedExecuted()
+	{
+		$this->estimate->executed = $this->executed;
+		$this->estimate->save();
+	}
 
-    protected $listeners = [
-        'tableRerender' => 'render',
-    ];
+	protected $listeners = [
+		'tableRerender' => 'render',
+	];
 
-    public function render()
-    {
-        return view('livewire.pages.estimate.edit.table');
-    }
+	public function render()
+	{
+		return view('livewire.pages.estimate.edit.table');
+	}
 }

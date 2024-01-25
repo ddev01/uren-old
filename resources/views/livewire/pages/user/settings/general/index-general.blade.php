@@ -1,7 +1,7 @@
 <x-user.container>
-    <div class="p-8 bg-white dark:bg-gray-800 w-full rounded-lg space-y-5 col-span-2  shadow-primary">
-        <h1 class="text-lg">
-            Coming soon...
-        </h1>
-    </div>
+	<div class="col-span-2 w-full space-y-5 rounded-lg bg-white p-8 shadow-primary dark:bg-gray-800">
+		<h1 class="text-lg">
+			Coming soon...
+		</h1>
+	</div>
 </x-user.container>

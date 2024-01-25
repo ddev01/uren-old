@@ -8,21 +8,21 @@ use Illuminate\View\Component;
 
 class Checkbox extends Component
 {
-    public $name;
+	public $name;
 
-    public $label;
+	public $label;
 
-    public function __construct($name, $label = false)
-    {
-        $this->name = $name;
-        $this->label = $label;
-    }
+	public function __construct($name, $label = false)
+	{
+		$this->name = $name;
+		$this->label = $label;
+	}
 
-    /**
-     * Get the view / contents that represent the component.
-     */
-    public function render(): View|Closure|string
-    {
-        return view('components.input.checkbox');
-    }
+	/**
+	 * Get the view / contents that represent the component.
+	 */
+	public function render(): View|Closure|string
+	{
+		return view('components.input.checkbox');
+	}
 }

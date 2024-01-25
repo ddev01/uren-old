@@ -14,34 +14,34 @@
         this.sectionHours = total;
     },
 }">
-    <div class="mt-4 gap-2 rounded-t-md bg-gray-400/20 p-3 flexy">
-        <div class="w-[125px]"></div>
-        <div class="w-[60px] px-4" x-text="sectionHours"></div>
-        {{--        <button @click="tableTotal">calc hours</button> --}}
-        <div class="flex-1">
-            <x-input.input name="name" wire:model.lazy="name" />
-        </div>
-        <div class="flex-1">
-            <x-input.input name="description" wire:model.lazy="description" />
-        </div>
-        <div class="flex-1" x-show="showNotes">
-            <x-input.input name="note" wire:model.lazy="note" />
-        </div>
-        <div class="w-[90px] p-1 flexb">
-            <button class="fa-solid fa-square-minus" wire:click="sectionDelete" @click="tableTotal"></button>
-            <button class="fa-solid fa-clone" wire:click="sectionDuplicate" @click="tableTotal"></button>
-            <button class="fa-solid fa-angle-up" wire:click="sectionUp"></button>
-            <button class="fa-solid fa-angle-down" wire:click="sectionDown"></button>
+	<div class="mt-4 gap-2 rounded-t-md bg-gray-400/20 p-3 flexy">
+		<div class="w-[125px]"></div>
+		<div class="w-[60px] px-4" x-text="sectionHours"></div>
+		{{--        <button @click="tableTotal">calc hours</button> --}}
+		<div class="flex-1">
+			<x-input.input name="name" wire:model.lazy="name" />
+		</div>
+		<div class="flex-1">
+			<x-input.input name="description" wire:model.lazy="description" />
+		</div>
+		<div class="flex-1" x-show="showNotes">
+			<x-input.input name="note" wire:model.lazy="note" />
+		</div>
+		<div class="w-[90px] p-1 flexb">
+			<button class="fa-solid fa-square-minus" wire:click="sectionDelete" @click="tableTotal"></button>
+			<button class="fa-solid fa-clone" wire:click="sectionDuplicate" @click="tableTotal"></button>
+			<button class="fa-solid fa-angle-up" wire:click="sectionUp"></button>
+			<button class="fa-solid fa-angle-down" wire:click="sectionDown"></button>
 
-        </div>
-    </div>
-    @foreach ($section->rows as $row)
-        <livewire:pages.estimate.edit.row :row="$row" :key="$row->id" />
-    @endforeach
-    <div class="hidden" x-init="sectionTotal"></div>
-    <button class="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 flexc" wire:click="pushRow">
-        <i class="fa-solid fa-square-plus"></i></button>
-    <button class="right-left absolute bottom-0 -translate-x-1/2 translate-y-1/2 flexc" wire:click="pushSection">
-        <i class="fa-solid fa-square-plus"></i>
-    </button>
+		</div>
+	</div>
+	@foreach ($section->rows as $row)
+		<livewire:pages.estimate.edit.row :row="$row" :key="$row->id" />
+	@endforeach
+	<div class="hidden" x-init="sectionTotal"></div>
+	<button class="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 flexc" wire:click="pushRow">
+		<i class="fa-solid fa-square-plus"></i></button>
+	<button class="right-left absolute bottom-0 -translate-x-1/2 translate-y-1/2 flexc" wire:click="pushSection">
+		<i class="fa-solid fa-square-plus"></i>
+	</button>
 </div>
