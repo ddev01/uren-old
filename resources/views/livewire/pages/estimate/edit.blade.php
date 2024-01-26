@@ -46,18 +46,32 @@
 }">
 			<div class="w-full rounded-md p-4">
 				<div class="flexb">
-					<x-input.input name="name" label="name" wire:model.lazy="name" />
-					<x-button href="{{ route('estimate.pdf', $estimate) }}">PDF </x-button>
-					<div class="gap-2 flexy">
-						<x-modal.primary>
-							<x-slot name="button">
-								<i class="fa-solid fa-user-plus fa-xl" :class="{ 'text-green-500': <?php echo $estimate->public == 1 ? 'true' : 'false'; ?> }"></i>
-							</x-slot>
-							<livewire:components.modal.share-manage :estimate="$estimate" />
-						</x-modal.primary>
-						<x-input.checkbox name="public" label="public" wire:model.lazy="public" :checked="$public == '1'" />
-						<x-input.checkbox name="notes" label="notes" wire:model="showNotes" wire:change="handleShowNotesChange" :checked="$showNotes == '1'" />
-						<x-input.number name="price" label="price" wire:model.lazy="price" />
+					<div class="flex w-full items-end gap-6">
+						<x-flowbite.inputs.input name="name" width="w-1/3" label="name" wire:model.lazy="name" />
+						<x-flowbite.button href="{{ route('estimate.pdf', $estimate) }}">PDF </x-flowbite.button>
+
+					</div>
+					<div class="flex items-end gap-6">
+						<div class="gap-6 flexy">
+							<x-modal.primary>
+								<x-slot name="button">
+									<i class="fa-solid fa-user-plus fa-xl" :class="{ 'text-green-500': <?php echo $estimate->public == 1 ? 'true' : 'false'; ?> }"></i>
+								</x-slot>
+								<livewire:components.modal.share-manage :estimate="$estimate" />
+							</x-modal.primary>
+							<div class="flex flex-col justify-end">
+								<div class="gap-2 flexb">
+									<span>{{ __('public') }}</span>
+									<input class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-800" id="checkbox-table-search-1" type="checkbox" wire:model.lazy="public" :checked="$public == '1'">
+								</div>
+								<div class="gap-2 flexb">
+									<span>{{ __('Notes') }}</span>
+									<input class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-800" id="checkbox-table-search-1" type="checkbox" ire:model="showNotes" wire:change="handleShowNotesChange" :checked="$showNotes == '1'">
+								</div>
+							</div>
+						</div>
+
+						<x-flowbite.inputs.input name="price" type="number" width="w-fit" label="price" wire:model.lazy="price" />
 					</div>
 				</div>
 				<div class="mt-6">

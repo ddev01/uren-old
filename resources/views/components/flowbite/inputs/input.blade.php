@@ -1,4 +1,4 @@
-<div class="w-full" x-data="{ clearInput: function () { this.$refs.inputElement.value = ''; @this.set('{{ $name }}', ''); } }">
+<div class="{{ $width }}" x-data="{ clearInput: function () { this.$refs.inputElement.value = ''; @this.set('{{ $name }}', ''); } }">
     @if ($label)
         <label for="{{ $name }}"
             class="mb-2 block text-sm font-medium 
@@ -19,7 +19,7 @@
         <div class="relative w-full">
             <input {{ $attributes }} id="{{ $name }}" type="text" x-ref="inputElement"
                 class="
-                block w-full min-w-0 flex-1  border bg-gray-50 p-2.5 text-sm text-gray-900 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 peer  pl-2.5
+                block w-full min-w-0 flex-1 no-spinners border bg-gray-50 p-2.5 text-sm text-gray-900 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 peer  pl-2.5
                 {{ $icon ? 'rounded-e-lg' : 'rounded-lg' }}
                 @if($prefix ?? false)
                     indent-[2.375rem]

@@ -1,4 +1,4 @@
-<div class="relative" data-position="{{ $section->position }}" x-data="{
+<div class="relative mt-8 shadow-md sm:rounded-lg" data-position="{{ $section->position }}" x-data="{
     'sectionHours': 21,
     sectionTotal: function() {
         let total = 0;
@@ -14,20 +14,21 @@
         this.sectionHours = total;
     },
 }">
-	<div class="mt-4 gap-2 rounded-t-md bg-gray-400/20 p-3 flexy">
+	<div class="gap-3 rounded-t-md border-b bg-gray-100 p-3 text-xs uppercase text-gray-700 flexy dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
+
 		<div class="w-[125px]"></div>
 		<div class="w-[60px] px-4" x-text="sectionHours"></div>
 		{{--        <button @click="tableTotal">calc hours</button> --}}
 		<div class="flex-1">
-			<x-input.input name="name" wire:model.lazy="name" />
+			<x-flowbite.inputs.input name="name" wire:model.lazy="name" />
 		</div>
 		<div class="flex-1">
-			<x-input.input name="description" wire:model.lazy="description" />
+			<x-flowbite.inputs.input name="description" wire:model.lazy="description" />
 		</div>
 		<div class="flex-1" x-show="showNotes">
-			<x-input.input name="note" wire:model.lazy="note" />
+			<x-flowbite.inputs.input name="note" wire:model.lazy="note" />
 		</div>
-		<div class="w-[90px] p-1 flexb">
+		<div class="text-md w-[90px] p-1 flexb">
 			<button class="fa-solid fa-square-minus" wire:click="sectionDelete" @click="tableTotal"></button>
 			<button class="fa-solid fa-clone" wire:click="sectionDuplicate" @click="tableTotal"></button>
 			<button class="fa-solid fa-angle-up" wire:click="sectionUp"></button>
@@ -35,9 +36,12 @@
 
 		</div>
 	</div>
-	@foreach ($section->rows as $row)
-		<livewire:pages.estimate.edit.row :row="$row" :key="$row->id" />
-	@endforeach
+
+	<div class="divide-y">
+		@foreach ($section->rows as $row)
+			<livewire:pages.estimate.edit.row :row="$row" :key="$row->id" />
+		@endforeach
+	</div>
 	<div class="hidden" x-init="sectionTotal"></div>
 	<button class="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 flexc" wire:click="pushRow">
 		<i class="fa-solid fa-square-plus"></i></button>
