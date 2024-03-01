@@ -26,9 +26,9 @@ class Svg extends Component
                 $svgContent = preg_replace('/<svg /', '<svg class="'.$this->class.'" ', $svgContent, 1);
             }
 
-            return $svgContent;
+            return view('components.svg', ['svgContent' => $svgContent]);
         }
 
-        return ''; // Return empty string if file doesn't exist
+        return view('components.svg', ['svgContent' => '<div class="text-red-500">SVG not found</div>']);
     }
 }
