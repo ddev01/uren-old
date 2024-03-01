@@ -3,7 +3,7 @@ import groupModifierPlugin from 'tailwindcss-group-modifier-plugin';
 
 export default {
 	darkMode: 'class',
-	content: ['./resources/views/**/*.blade.php', 'app/View/Components/Flowbite/Button.php', './App/View/**/*.php', './App/Livewire/**/*.php', './resources/js/**/*.js', './resources/css/**/*.css', './vendor/usernotnull/tall-toasts/config/**/*.php', './vendor/usernotnull/tall-toasts/resources/views/**/*.blade.php', 'public/svgs/**/*.svg'],
+	content: ['./resources/views/**/*.blade.php', './app/View/**/*.php', './app/Livewire/**/*.php', './resources/js/**/*.js', './resources/css/**/*.css', './vendor/usernotnull/tall-toasts/config/**/*.php', './vendor/usernotnull/tall-toasts/resources/views/**/*.blade.php', 'public/svgs/**/*.svg'],
 
 	theme: {
 		extend: {
