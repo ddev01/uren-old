@@ -1,4 +1,16 @@
-<div class="{{ $width }}" x-data="{ clearInput: function () { this.$refs.inputElement.value = ''; @this.set('{{ $name }}', ''); } }">
+<div class="{{ $width }}" x-data="{
+	clearInput: function () { this.$refs.inputElement.value = ''; @this.set('{{ $name }}', ''); },
+	showPassword: false,
+	togglePasswordVisibility: function () {
+		this.showPassword = !this.showPassword;
+		const input = this.$refs.inputElement;
+		if (this.showPassword) {
+			input.type = 'text';
+		} else {
+			input.type = 'password';
+		}
+	}
+}">
     @if ($label)
         <label for="{{ $name }}"
             class="mb-2 block text-sm font-medium
@@ -63,11 +75,21 @@
                     <x-svg class="h-4 w-4 cursor-pointer" icon="x"  />
                 </div>
             @endif
+			@if ($attributes->get('type') == 'password')
+				<button tabindex="-1"  type="button" @click="togglePasswordVisibility()" class="absolute top-1/2 -translate-y-1/2 right-4 h-4 w-4 text-gray-400 transition-all duration-200 ease-in-out opacity-100 pointer-events-auto" :class="showPassword ? 'opacity-0 pointer-events-none' : ''">
+					<x-svg icon="eye" />
+				</button>
+				<button tabindex="-1" type="button" @click="togglePasswordVisibility()" class="absolute top-1/2 -translate-y-1/2 right-4 h-4 w-4 text-gray-400 transition-all duration-200 ease-in-out opacity-0 pointer-events-none" :class="showPassword ? 'opacity-100 pointer-events-auto' : ''">
+					<x-svg icon="eye-slash" />
+				</button>
+			@endif
         </div>
     </div>
-    @error($name)
-        <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
-    @enderror
+    @if ($attributes->get('type') != 'password')
+		@error($name)
+			<p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+		@enderror
+	@endif
     @if ($helper)
         <p class="mt-2 text-sm text-gray-500 dark:text-gray-400 block input-helper">
             {{ $helper }}

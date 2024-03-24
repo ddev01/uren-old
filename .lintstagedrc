@@ -1,7 +1,7 @@
 {
-    "*.blade.php": "prettier --write",
-    "*.php": "./vendor/bin/duster fix",
-    "*.css": "prettier --write",
-    "*.scss": "prettier --write",
-    "*.js": "prettier --write",
+	"*.blade.php": "prettier --write",
+	"*.php": ["./vendor/bin/duster fix", "./vendor/bin/phpstan analyse --error-format=prettyJson --no-progress"],
+	"*.css": "prettier --write",
+	"*.scss": "prettier --write",
+	"*.js": "prettier --write"
 }
