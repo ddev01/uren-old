@@ -1,6 +1,6 @@
 {
     "*.blade.php": "prettier --write",
-    "*.php": "./vendor/bin/pint",
+    "*.php": "./vendor/bin/duster fix",
     "*.css": "prettier --write",
     "*.scss": "prettier --write",
     "*.js": "prettier --write",

@@ -18,12 +18,12 @@ class Svg extends Component
 
     public function render()
     {
-        $path = public_path('svgs/'.$this->icon.'.svg');
+        $path = public_path('svgs/' . $this->icon . '.svg');
         if (file_exists($path)) {
             $svgContent = file_get_contents($path);
             // Only inject the class attribute into the SVG content if $class is not empty
             if (! empty($this->class)) {
-                $svgContent = preg_replace('/<svg /', '<svg class="'.$this->class.'" ', $svgContent, 1);
+                $svgContent = preg_replace('/<svg /', '<svg class="' . $this->class . '" ', $svgContent, 1);
             }
 
             return view('components.svg', ['svgContent' => $svgContent]);

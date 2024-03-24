@@ -5,6 +5,7 @@ namespace App\Livewire\Components\Modal;
 use App\Mail\Estimate\Shared;
 use App\Models\EstimateShare;
 use App\Models\User;
+use Exception;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
@@ -88,7 +89,7 @@ class ShareManage extends Component
                 ->success('User removed from estimate successfully', 'Estimate')
                 ->push();
             $this->getSharedEmails();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             toast()
                 ->danger('Something went wrong removing the user', 'Estimate')
                 ->push();

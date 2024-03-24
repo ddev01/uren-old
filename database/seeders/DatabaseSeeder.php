@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $dev = \App\Models\User::factory()->create([
+        $dev = User::factory()->create([
             'email' => 'dev@outlawz.nl',
             'password' => Hash::make('admin'),
         ]);
@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
                 'user_id' => $dev->id,
                 // ... other attributes, if needed ...
             ]);
-        \App\Models\User::factory()->create([
+        User::factory()->create([
             'email' => 'test@test.nl',
             'password' => Hash::make('test'),
         ]);

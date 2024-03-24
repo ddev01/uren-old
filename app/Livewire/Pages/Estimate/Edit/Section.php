@@ -14,6 +14,10 @@ class Section extends Component
 
     public $note;
 
+    protected $listeners = [
+        'sectionRerender' => 'render',
+    ];
+
     public function mount($section)
     {
         $this->section = $section;
@@ -39,10 +43,6 @@ class Section extends Component
         $this->section->note = $this->note;
         $this->section->save();
     }
-
-    protected $listeners = [
-        'sectionRerender' => 'render',
-    ];
 
     public function pushRow()
     {

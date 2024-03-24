@@ -37,7 +37,7 @@ class Index extends Component
         $hashedName = $this->avatar->hashName();
 
         // Prepend the file path to the hashed name
-        $filePath = 'avatars/'.$hashedName;
+        $filePath = 'avatars/' . $hashedName;
 
         // Update the user's avatar with the file path
         Auth::user()->update(['avatar' => $filePath]);

@@ -6,6 +6,7 @@ use App\Models\Estimate;
 use App\Models\EstimateSection;
 use App\Models\EstimateSectionRow;
 use Carbon\Carbon;
+use Exception;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Usernotnull\Toast\Concerns\WireToast;
@@ -13,8 +14,6 @@ use Usernotnull\Toast\Concerns\WireToast;
 class Index extends Component
 {
     use WireToast, WithPagination;
-
-    protected $paginationTheme = 'flowbite';
 
     public $name;
 
@@ -25,6 +24,8 @@ class Index extends Component
     public $sortColumn = 'created_at';
 
     public $sortDirection = 'desc';
+
+    protected $paginationTheme = 'flowbite';
 
     public function mount()
     {
@@ -89,7 +90,7 @@ class Index extends Component
 
         // Apply search filter
         if (! empty($this->searchFilter)) {
-            $query->where('name', 'like', '%'.$this->searchFilter.'%');
+            $query->where('name', 'like', '%' . $this->searchFilter . '%');
         }
 
         return $query->orderBy($this->sortColumn, $this->sortDirection)->paginate(10);
@@ -114,7 +115,7 @@ class Index extends Component
             toast()
                 ->success('Created successfully', 'Estimate')
                 ->push();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             toast()
                 ->danger('Something went wrong', 'Estimate')
                 ->push();
@@ -129,7 +130,7 @@ class Index extends Component
             toast()
                 ->success('Deleted successfully', 'Estimate')
                 ->push();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             toast()
                 ->danger('Something went wrong', 'Estimate')
                 ->push();

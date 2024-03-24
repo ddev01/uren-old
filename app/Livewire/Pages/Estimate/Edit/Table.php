@@ -8,15 +8,15 @@ class Table extends Component
 {
     public $estimate;
 
+    protected $listeners = [
+        'tableRerender' => 'render',
+    ];
+
     public function updatedExecuted()
     {
         $this->estimate->executed = $this->executed;
         $this->estimate->save();
     }
-
-    protected $listeners = [
-        'tableRerender' => 'render',
-    ];
 
     public function render()
     {

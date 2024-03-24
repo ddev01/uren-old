@@ -20,7 +20,7 @@ class EstimateFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => \App\Models\User::factory(),
+            'user_id' => User::factory(),
             'name' => $this->faker->word,
         ];
     }

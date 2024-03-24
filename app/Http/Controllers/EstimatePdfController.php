@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Barryvdh\DomPDF\Facade\Pdf;
+use NumberFormatter;
 
 class EstimatePdfController extends Controller
 {
@@ -79,7 +80,7 @@ class EstimatePdfController extends Controller
         // }
         // return '$ ' . $formattedPrice . ',-';
 
-        $formatter = new \NumberFormatter('nl_NL', \NumberFormatter::CURRENCY);
+        $formatter = new NumberFormatter('nl_NL', NumberFormatter::CURRENCY);
         $formattedPrice = $formatter->formatCurrency($price, 'EUR');
 
         return $formattedPrice;
