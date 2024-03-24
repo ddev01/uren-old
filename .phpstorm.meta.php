@@ -3,6 +3,27 @@
 // @formatter:off
 
 namespace PHPSTORM_META {
+    use App;
+
+    use function app;
+    use function array_add;
+    use function array_except;
+    use function array_first;
+    use function array_get;
+    use function array_last;
+    use function array_only;
+    use function array_prepend;
+    use function array_pull;
+    use function array_set;
+    use function array_sort;
+    use function array_sort_recursive;
+    use function array_where;
+    use function head;
+    use function last;
+    use function optional;
+    use function resolve;
+    use function tap;
+    use function with;
 
     /**
      * PhpStorm Meta file, to provide autocomplete information for PhpStorm
@@ -1106,7 +1127,7 @@ namespace PHPSTORM_META {
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         'view.finder' => \Illuminate\View\FileViewFinder::class,
     ]));
-    override(\App::get(0), map([
+    override(App::get(0), map([
         '' => '@',
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'Illuminate\Auth\Console\ClearResetsCommand' => \Illuminate\Auth\Console\ClearResetsCommand::class,
@@ -1325,7 +1346,7 @@ namespace PHPSTORM_META {
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         'view.finder' => \Illuminate\View\FileViewFinder::class,
     ]));
-    override(\App::make(0), map([
+    override(App::make(0), map([
         '' => '@',
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'Illuminate\Auth\Console\ClearResetsCommand' => \Illuminate\Auth\Console\ClearResetsCommand::class,
@@ -1544,7 +1565,7 @@ namespace PHPSTORM_META {
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         'view.finder' => \Illuminate\View\FileViewFinder::class,
     ]));
-    override(\App::makeWith(0), map([
+    override(App::makeWith(0), map([
         '' => '@',
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'Illuminate\Auth\Console\ClearResetsCommand' => \Illuminate\Auth\Console\ClearResetsCommand::class,
@@ -1763,7 +1784,7 @@ namespace PHPSTORM_META {
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         'view.finder' => \Illuminate\View\FileViewFinder::class,
     ]));
-    override(\app(0), map([
+    override(app(0), map([
         '' => '@',
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'Illuminate\Auth\Console\ClearResetsCommand' => \Illuminate\Auth\Console\ClearResetsCommand::class,
@@ -1982,7 +2003,7 @@ namespace PHPSTORM_META {
         'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         'view.finder' => \Illuminate\View\FileViewFinder::class,
     ]));
-    override(\resolve(0), map([
+    override(resolve(0), map([
         '' => '@',
         'Barryvdh\Debugbar\LaravelDebugbar' => \Barryvdh\Debugbar\LaravelDebugbar::class,
         'Illuminate\Auth\Console\ClearResetsCommand' => \Illuminate\Auth\Console\ClearResetsCommand::class,
@@ -2438,22 +2459,22 @@ namespace PHPSTORM_META {
     override(\Illuminate\Support\Arr::sort(0), type(0));
     override(\Illuminate\Support\Arr::sortRecursive(0), type(0));
     override(\Illuminate\Support\Arr::where(0), type(0));
-    override(\array_add(0), type(0));
-    override(\array_except(0), type(0));
-    override(\array_first(0), elementType(0));
-    override(\array_last(0), elementType(0));
-    override(\array_get(0), elementType(0));
-    override(\array_only(0), type(0));
-    override(\array_prepend(0), type(0));
-    override(\array_pull(0), elementType(0));
-    override(\array_set(0), type(0));
-    override(\array_sort(0), type(0));
-    override(\array_sort_recursive(0), type(0));
-    override(\array_where(0), type(0));
-    override(\head(0), elementType(0));
-    override(\last(0), elementType(0));
-    override(\with(0), type(0));
-    override(\tap(0), type(0));
-    override(\optional(0), type(0));
+    override(array_add(0), type(0));
+    override(array_except(0), type(0));
+    override(array_first(0), elementType(0));
+    override(array_last(0), elementType(0));
+    override(array_get(0), elementType(0));
+    override(array_only(0), type(0));
+    override(array_prepend(0), type(0));
+    override(array_pull(0), elementType(0));
+    override(array_set(0), type(0));
+    override(array_sort(0), type(0));
+    override(array_sort_recursive(0), type(0));
+    override(array_where(0), type(0));
+    override(head(0), elementType(0));
+    override(last(0), elementType(0));
+    override(with(0), type(0));
+    override(tap(0), type(0));
+    override(optional(0), type(0));
 
 }
