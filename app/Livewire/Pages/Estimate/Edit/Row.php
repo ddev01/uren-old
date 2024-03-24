@@ -20,7 +20,7 @@ class Row extends Component
 
     public $note;
 
-    public $executed;
+    //    public $executed;
 
     public function mount($row)
     {

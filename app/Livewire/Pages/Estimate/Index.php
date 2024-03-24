@@ -11,6 +11,9 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Usernotnull\Toast\Concerns\WireToast;
 
+/**
+ * @property-read \Illuminate\Pagination\LengthAwarePaginator $estimates Computed property for getting estimates.
+ */
 class Index extends Component
 {
     use WireToast, WithPagination;
@@ -67,6 +70,11 @@ class Index extends Component
         return $labels[$this->dateFilter] ?? 'Unknown';
     }
 
+    /**
+     * Get the estimates based on filters.
+     *
+     * @return \Illuminate\Pagination\LengthAwarePaginator
+     */
     public function getEstimatesProperty()
     {
         $query = Estimate::where('user_id', auth()->id());

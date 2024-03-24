@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EstimateSectionRow[] $rows Related EstimateSectionRow models
+ */
 class EstimateSection extends Model
 {
     use HasFactory, HasUuids;

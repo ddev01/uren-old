@@ -12,11 +12,11 @@ class Table extends Component
         'tableRerender' => 'render',
     ];
 
-    public function updatedExecuted()
-    {
-        $this->estimate->executed = $this->executed;
-        $this->estimate->save();
-    }
+    //    public function updatedExecuted()
+    //    {
+    //        $this->estimate->executed = $this->executed;
+    //        $this->estimate->save();
+    //    }
 
     public function render()
     {

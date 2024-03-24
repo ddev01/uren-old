@@ -2,28 +2,37 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Estimate;
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class EstimatePermissions
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
     public function handle(Request $request, Closure $next): Response
     {
         $estimate = $request->route('estimate');
+
+        // Ensure $estimate is an instance of the Estimate model
+        if (! $estimate instanceof Estimate) {
+            abort(404, 'Estimate not found.');
+        }
+
         $shared = null;
 
         // Check if the user is logged in
         if (auth()->check()) {
-            $shared = $estimate->shares()->where('user_email', auth()->user()->email)->first();
+            /** @var User $user */
+            $user = auth()->user();
+            if ($user instanceof User) { // Explicitly checking the instance
+                $shared = $estimate->shares()->where('user_email', $user->email)->first();
+            }
         }
 
-        if ($estimate->user_id !== auth()->id() && $estimate->public === 0 && ! $shared) {
+        // Adjusted comparison for 'public' property
+        // Assuming 'public' is an integer (0 or 1) in the database
+        if ($estimate->user_id !== auth()->id() && $estimate->public == 0 && ! $shared) {
             abort(404);
         }
 
