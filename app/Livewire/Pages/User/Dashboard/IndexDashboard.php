@@ -6,8 +6,8 @@ use Livewire\Component;
 
 class IndexDashboard extends Component
 {
-	public function render()
-	{
-		return view('livewire.pages.user.dashboard.index-dashboard');
-	}
+    public function render()
+    {
+        return view('livewire.pages.user.dashboard.index-dashboard');
+    }
 }

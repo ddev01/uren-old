@@ -6,8 +6,8 @@ use Livewire\Component;
 
 class IndexGeneral extends Component
 {
-	public function render()
-	{
-		return view('livewire.pages.user.settings.general.index-general');
-	}
+    public function render()
+    {
+        return view('livewire.pages.user.settings.general.index-general');
+    }
 }

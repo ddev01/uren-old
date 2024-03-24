@@ -8,19 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class EstimateSectionRow extends Model
 {
-	use HasFactory, HasUuids;
+    use HasFactory, HasUuids;
 
-	// protected $touches = ['estimate'];
+    // protected $touches = ['estimate'];
 
-	protected $fillable = ['name', 'hours', 'description', 'note', 'position', 'estimate_section_id'];
+    protected $fillable = ['name', 'hours', 'description', 'note', 'position', 'estimate_section_id'];
 
-	public function section()
-	{
-		return $this->belongsTo(EstimateSection::class, 'estimate_section_id');
-	}
+    public function section()
+    {
+        return $this->belongsTo(EstimateSection::class, 'estimate_section_id');
+    }
 
-	public function estimate()
-	{
-		return $this->belongsTo(Estimate::class, 'estimate_id');
-	}
+    public function estimate()
+    {
+        return $this->belongsTo(Estimate::class, 'estimate_id');
+    }
 }

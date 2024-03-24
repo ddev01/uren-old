@@ -6,8 +6,8 @@ use Livewire\Component;
 
 class Summary extends Component
 {
-	public function render()
-	{
-		return view('livewire.pages.estimate.edit.summary');
-	}
+    public function render()
+    {
+        return view('livewire.pages.estimate.edit.summary');
+    }
 }
