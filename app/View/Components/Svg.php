@@ -6,11 +6,11 @@ use Illuminate\View\Component;
 
 class Svg extends Component
 {
-    public $icon;
+    public string $icon;
 
-    public $class;
+    public string $class;
 
-    public function __construct($icon, $class = '')
+    public function __construct(string $icon, string $class = '')
     {
         $this->icon = $icon;
         $this->class = $class;

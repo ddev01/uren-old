@@ -145,7 +145,7 @@ class Index extends Component
         }
     }
 
-    public function render()
+    public function render(): \Illuminate\Contracts\View\View
     {
         return view('livewire.pages.estimate.index', [
             'estimates' => $this->estimates, // Access the computed property here

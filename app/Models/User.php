@@ -38,7 +38,7 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function getAvatar()
+    public function getAvatar(): string
     {
         if ($this->avatar) {
             return Storage::disk('public')->url("{$this->avatar}");

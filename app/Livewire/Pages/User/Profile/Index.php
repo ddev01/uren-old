@@ -62,7 +62,7 @@ class Index extends Component
             ->push();
     }
 
-    public function render()
+    public function render(): \Illuminate\Contracts\View\View
     {
         return view('livewire.pages.user.profile.index');
     }

@@ -18,7 +18,7 @@ class Table extends Component
     //        $this->estimate->save();
     //    }
 
-    public function render()
+    public function render(): \Illuminate\Contracts\View\View
     {
         return view('livewire.pages.estimate.edit.table');
     }

@@ -12,9 +12,12 @@ class Shared extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $data;
+    /**
+     * @var array<string, mixed>
+     */
+    public array $data;
 
-    public function __construct($data)
+    public function __construct(array $data)
     {
         $this->data = $data;
     }
@@ -24,9 +27,7 @@ class Shared extends Mailable
      */
     public function envelope(): Envelope
     {
-        return new Envelope(
-            subject: $this->data['inviterName'] . ' shared an hour estimate with you',
-        );
+        return new Envelope(subject: $this->data['inviterName'] . ' shared an hour estimate with you');
     }
 
     /**
@@ -34,9 +35,7 @@ class Shared extends Mailable
      */
     public function content(): Content
     {
-        return new Content(
-            markdown: 'mails.Estimate.Shared',
-        );
+        return new Content(markdown: 'mails.Estimate.Shared');
     }
 
     /**

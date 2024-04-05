@@ -17,7 +17,7 @@ class IndexGeneral extends Component
 
     public string $newPasswordConfirmation;
 
-    public function changePassword()
+    public function changePassword(): void
     {
         $this->validate([
             'currentPassword' => 'required',
@@ -42,7 +42,7 @@ class IndexGeneral extends Component
             ->push();
     }
 
-    public function render()
+    public function render(): \Illuminate\Contracts\View\View
     {
         return view('livewire.pages.user.settings.general.index-general');
     }

@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class IndexContact extends Component
 {
-    public function render()
+    public function render(): \Illuminate\Contracts\View\View
     {
         return view('livewire.pages.user.contact.index-contact');
     }

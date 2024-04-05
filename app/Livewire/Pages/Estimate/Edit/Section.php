@@ -193,7 +193,7 @@ class Section extends Component
         $this->dispatch('tableRerender');
     }
 
-    public function render()
+    public function render(): \Illuminate\Contracts\View\View
     {
         return view('livewire.pages.estimate.edit.section');
     }

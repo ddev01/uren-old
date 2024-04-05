@@ -12,15 +12,23 @@ class Button extends Component
 
     public string $base;
 
-    public array $colors;
-
     public string $color;
-
-    public array $sizes;
 
     public string $size;
 
-    public function __construct(public $href = false, string $size = 'base', string $color = 'blue')
+    public ?string $href;
+
+    /**
+     * @var string[]
+     */
+    public array $colors;
+
+    /**
+     * @var string[]
+     */
+    public array $sizes;
+
+    public function __construct(?string $href = null, string $size = 'base', string $color = 'blue')
     {
         // $this->base = 'flexc text-center text-white font-medium bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800';
         $this->base = 'flexc text-center font-medium rounded-lg focus:ring-4 focus:outline-none hover:scale-105 transition-all cursor-pointer hover:no-underline duration-150 transition-timing-function[button] appearance-none';
