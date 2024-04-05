@@ -1,6 +1,6 @@
 {
 	"*.blade.php": "prettier --write",
-	"*.php": ["./vendor/bin/duster fix", "./vendor/bin/phpstan analyse --error-format=prettyJson --no-progress"],
+	"*.php": ["./vendor/bin/duster fix", "./vendor/bin/phpstan analyse --error-format=prettyJson --no-progress --memory-limit 512m"],
 	"*.css": "prettier --write",
 	"*.scss": "prettier --write",
 	"*.js": "prettier --write"

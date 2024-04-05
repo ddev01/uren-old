@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('estimate_section_rows', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('type')->default('default');
-            $table->integer('hours')->nullable();
+            $table->float('hours')->nullable();
             $table->string('name')->nullable();
             $table->string('description')->nullable();
             $table->string('note')->nullable();
