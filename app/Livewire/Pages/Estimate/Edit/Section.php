@@ -214,7 +214,7 @@ class Section extends Component
             'note' => $this->section->note,
             'position' => $this->section->position + 1,
         ]);
-        /** @var \Illuminate\Database\Eloquent\Collection<App\Models\EstimateSectionRow> $rows */
+        /** @var \Illuminate\Database\Eloquent\Collection<int, \App\Models\EstimateSectionRow> */
         $rows = $this->section->rows;
         foreach ($rows as $row) {
             $newSection->rows()->create([

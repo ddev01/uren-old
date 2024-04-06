@@ -7,11 +7,12 @@ parameters:
         - app/
 
     # Level 9 is the highest level
-    level: 5
+    level: 6
 
 
     ignoreErrors:
-        - '#Call to an undefined method Illuminate\\Support\\Collection::toArray\(\)#'
+#        - '#Call to an undefined method Illuminate\\Support\\Collection::toArray\(\)#'
+        - '#Method App\\Mail\\Estimate\\Shared::__construct\(\) has parameter \$data with no value type specified in iterable type array.#'
     excludePaths:
         - bootstrap/app.php
         - _ide_helper_models.php
