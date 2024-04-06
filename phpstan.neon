@@ -9,10 +9,13 @@ parameters:
     # Level 9 is the highest level
     level: 5
 
-#    ignoreErrors:
-#        - '#PHPDoc tag @var#'
-#
-#    excludePaths:
-#        - ./*/*/FileToBeExcluded.php
+
+    ignoreErrors:
+        - '#Call to an undefined method Illuminate\\Support\\Collection::toArray\(\)#'
+    excludePaths:
+        - bootstrap/app.php
+        - _ide_helper_models.php
+        - _ide_helper.php
+        - .phpstorm.meta.php
 #
 #    checkMissingIterableValueType: false

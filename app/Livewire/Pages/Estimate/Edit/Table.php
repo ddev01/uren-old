@@ -6,19 +6,16 @@ use Livewire\Component;
 
 class Table extends Component
 {
-    public $estimate;
+    public object $estimate;
 
+    /**
+     * @var array<string, string>
+     */
     protected $listeners = [
         'tableRerender' => 'render',
     ];
 
-    //    public function updatedExecuted()
-    //    {
-    //        $this->estimate->executed = $this->executed;
-    //        $this->estimate->save();
-    //    }
-
-    public function render(): \Illuminate\Contracts\View\View
+    public function render(): \Illuminate\View\View
     {
         return view('livewire.pages.estimate.edit.table');
     }

@@ -2,27 +2,26 @@
 
 namespace App\Livewire\Pages\Estimate\Edit;
 
+use App\Models\EstimateSectionRow;
 use Livewire\Component;
 
 class Row extends Component
 {
-    public $row;
+    public EstimateSectionRow $row;
 
-    public $type;
+    public string $type;
 
-    public $hours;
+    public ?float $hours;
 
-    public $displayHours;
+    public float|string|null $displayHours;
 
-    public $name;
+    public ?string $name;
 
-    public $description;
+    public ?string $description;
 
-    public $note;
+    public ?string $note;
 
-    //    public $executed;
-
-    public function mount($row)
+    public function mount(EstimateSectionRow $row): void
     {
         $this->row = $row;
         $this->type = $this->row->type;
@@ -36,13 +35,13 @@ class Row extends Component
         $this->note = $this->row->note;
     }
 
-    public function updatedType()
+    public function updatedType(): void
     {
         $this->row->type = $this->type;
         $this->row->save();
     }
 
-    public function updatedDisplayHours()
+    public function updatedDisplayHours(): void
     {
         if ($this->displayHours == '') {
             $this->hours = 0;
@@ -53,7 +52,7 @@ class Row extends Component
         $this->row->save();
     }
 
-    public function updatedHours()
+    public function updatedHours(): void
     {
         if ($this->hours == '') {
             $this->hours = 0;
@@ -63,32 +62,32 @@ class Row extends Component
         $this->row->save();
     }
 
-    public function updatedName()
+    public function updatedName(): void
     {
         $this->row->name = $this->name;
         $this->row->save();
     }
 
-    public function updatedDescription()
+    public function updatedDescription(): void
     {
         $this->row->description = $this->description;
         $this->row->save();
         $this->render();
     }
 
-    public function updatedNote()
+    public function updatedNote(): void
     {
         $this->row->note = $this->note;
         $this->row->save();
     }
 
-    public function rowDelete()
+    public function rowDelete(): void
     {
         $this->row->delete();
         $this->dispatch('sectionRerender');
     }
 
-    public function rowUp()
+    public function rowUp(): void
     {
         //If it's not first we can decrement its position and increment the position of the row above it
         if ($this->row->position > 0) {
@@ -152,7 +151,7 @@ class Row extends Component
         }
     }
 
-    public function rowDown()
+    public function rowDown(): void
     {
         //If it's not last we can increment its position and decrement the position of the row below it
         if ($this->row->position < $this->row->section->rows()->count() - 1) {
@@ -208,7 +207,7 @@ class Row extends Component
         }
     }
 
-    public function rowDuplicate()
+    public function rowDuplicate(): void
     {
         $this->row->section
             ->rows()
@@ -220,7 +219,7 @@ class Row extends Component
         $this->dispatch('sectionRerender');
     }
 
-    public function render(): \Illuminate\Contracts\View\View
+    public function render(): \Illuminate\View\View
     {
         return view('livewire.pages.estimate.edit.row');
     }

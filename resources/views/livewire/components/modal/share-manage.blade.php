@@ -17,7 +17,7 @@
 	<div>
 		<h2 class="text-xl">Users who can view this estimate</h2>
 
-		@if (!$sharedUsers->isEmpty())
+		@if ($sharedUsers)
 			<div class="mt-6 flex flex-col divide-y divide-gray-400">
 				@foreach ($sharedUsers as $sharedUser)
 					{{-- <div>{{ $sharedUser }}</div> --}}

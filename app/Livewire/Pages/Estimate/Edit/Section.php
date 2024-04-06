@@ -2,49 +2,68 @@
 
 namespace App\Livewire\Pages\Estimate\Edit;
 
+use App\Models\EstimateSection;
 use Livewire\Component;
 
+/**
+ * Livewire component for editing estimate sections.
+ */
 class Section extends Component
 {
-    public $section;
+    public EstimateSection $section;
 
-    public $name;
+    public ?string $name;
+    public ?string $description;
+    public ?string $note;
 
-    public $description;
-
-    public $note;
-
+    /**
+     * @var array<string, string>
+     */
     protected $listeners = [
-        'sectionRerender' => 'render',
+        'sectionRerender' => '$refresh',
     ];
 
-    public function mount($section)
+    /**
+     * Mount the component.
+     *
+     * @param  EstimateSection  $section  The section to be edited.
+     */
+    public function mount(EstimateSection $section): void
     {
         $this->section = $section;
-        $this->name = $this->section->name;
-        $this->description = $this->section->description;
-        $this->note = $this->section->note;
+        $this->name = $section->name;
+        $this->description = $section->description;
+        $this->note = $section->note;
     }
 
-    public function updatedName()
+    /**
+     * Update the name of the section.
+     */
+    public function updatedName(): void
     {
-        $this->section->name = $this->name;
-        $this->section->save();
+        $this->section->update(['name' => $this->name]);
     }
 
-    public function updatedDescription()
+    /**
+     * Update the description of the section.
+     */
+    public function updatedDescription(): void
     {
-        $this->section->description = $this->description;
-        $this->section->save();
+        $this->section->update(['description' => $this->description]);
     }
 
-    public function updatedNote()
+    /**
+     * Update the note of the section.
+     */
+    public function updatedNote(): void
     {
-        $this->section->note = $this->note;
-        $this->section->save();
+        $this->section->update(['note' => $this->note]);
     }
 
-    public function pushRow()
+    /**
+     * Add a new row to the section.
+     */
+    public function pushRow(): void
     {
         $this->section->rows()->create([
             'type' => 'default',
@@ -56,7 +75,10 @@ class Section extends Component
         ]);
     }
 
-    public function pushSection()
+    /**
+     * Add a new section after the current one.
+     */
+    public function pushSection(): void
     {
         // Increments the position of sections that have positions more than $this->section
         $this->section->estimate
@@ -80,7 +102,10 @@ class Section extends Component
         $this->dispatch('tableRerender');
     }
 
-    public function sectionDelete()
+    /**
+     * Delete the current section.
+     */
+    public function sectionDelete(): void
     {
         // Decrements the position of sections that have positions higher than $this->section
         $this->section->estimate
@@ -109,7 +134,10 @@ class Section extends Component
         $this->dispatch('tableRerender');
     }
 
-    public function sectionUp()
+    /**
+     * Move the section up in the order.
+     */
+    public function sectionUp(): void
     {
         // If the section is not the first section
         if ($this->section->position > 0) {
@@ -137,7 +165,10 @@ class Section extends Component
         $this->dispatch('tableRerender');
     }
 
-    public function sectionDown()
+    /**
+     * Move the section down in the order.
+     */
+    public function sectionDown(): void
     {
         // If the section is not the last section
         if ($this->section->position < $this->section->estimate->sections()->count() - 1) {
@@ -165,7 +196,10 @@ class Section extends Component
         $this->dispatch('tableRerender');
     }
 
-    public function sectionDuplicate()
+    /**
+     * Duplicate the current section.
+     */
+    public function sectionDuplicate(): void
     {
         // Increments the position of sections that have positions more than $this->section
         $this->section->estimate
@@ -180,7 +214,9 @@ class Section extends Component
             'note' => $this->section->note,
             'position' => $this->section->position + 1,
         ]);
-        foreach ($this->section->rows as $row) {
+        /** @var \Illuminate\Database\Eloquent\Collection<App\Models\EstimateSectionRow> $rows */
+        $rows = $this->section->rows;
+        foreach ($rows as $row) {
             $newSection->rows()->create([
                 'type' => $row->type,
                 'hours' => $row->hours,
@@ -193,7 +229,7 @@ class Section extends Component
         $this->dispatch('tableRerender');
     }
 
-    public function render(): \Illuminate\Contracts\View\View
+    public function render(): \Illuminate\View\View
     {
         return view('livewire.pages.estimate.edit.section');
     }

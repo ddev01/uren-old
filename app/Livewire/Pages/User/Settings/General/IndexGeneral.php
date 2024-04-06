@@ -42,7 +42,7 @@ class IndexGeneral extends Component
             ->push();
     }
 
-    public function render(): \Illuminate\Contracts\View\View
+    public function render(): \Illuminate\View\View
     {
         return view('livewire.pages.user.settings.general.index-general');
     }

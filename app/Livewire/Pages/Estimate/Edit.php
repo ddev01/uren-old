@@ -7,17 +7,17 @@ use Livewire\Component;
 
 class Edit extends Component
 {
-    public $estimate;
+    public Estimate $estimate;
 
-    public $showNotes;
+    public bool $showNotes;
 
-    public $name;
+    public string $name;
 
-    public $price;
+    public float $price;
 
-    public $public;
+    public bool $public;
 
-    public function mount(Estimate $estimate)
+    public function mount(Estimate $estimate): void
     {
         $this->estimate = $estimate;
         $this->showNotes = $this->estimate->show_notes;
@@ -26,13 +26,13 @@ class Edit extends Component
         $this->public = $this->estimate->public;
     }
 
-    public function updatedPublic()
+    public function updatedPublic(): void
     {
         $this->estimate->public = $this->public;
         $this->estimate->save();
     }
 
-    public function handleShowNotesChange()
+    public function handleShowNotesChange(): void
     {
         $this->estimate->show_notes = $this->showNotes;
         $this->estimate->save();
@@ -43,19 +43,19 @@ class Edit extends Component
     //     $this->estimate->save();
     // }
 
-    public function updatedName()
+    public function updatedName(): void
     {
         $this->estimate->name = $this->name;
         $this->estimate->save();
     }
 
-    public function updatedPrice()
+    public function updatedPrice(): void
     {
         $this->estimate->hourly_rate = $this->price;
         $this->estimate->save();
     }
 
-    public function render(): \Illuminate\Contracts\View\View
+    public function render(): \Illuminate\View\View
     {
         return view('livewire.pages.estimate.edit');
     }

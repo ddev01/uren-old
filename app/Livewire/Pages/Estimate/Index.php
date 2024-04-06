@@ -12,40 +12,40 @@ use Livewire\WithPagination;
 use Usernotnull\Toast\Concerns\WireToast;
 
 /**
- * @property-read \Illuminate\Pagination\LengthAwarePaginator $estimates Computed property for getting estimates.
+ * @property \Illuminate\Contracts\Pagination\LengthAwarePaginator $estimates
  */
 class Index extends Component
 {
     use WireToast, WithPagination;
 
-    public $name;
+    public string $name;
 
-    public $dateFilter = '2';
+    public string $dateFilter = '2';
 
-    public $searchFilter;
+    public string $searchFilter;
 
-    public $sortColumn = 'created_at';
+    public string $sortColumn = 'created_at';
 
-    public $sortDirection = 'desc';
+    public string $sortDirection = 'desc';
 
-    protected $paginationTheme = 'flowbite';
+    protected string $paginationTheme = 'flowbite';
 
-    public function mount()
-    {
-        $this->resetPage(); // Reset the pagination after updating the filters
-    }
-
-    public function updatingSearchFilter()
+    public function mount(): void
     {
         $this->resetPage();
     }
 
-    public function updatingDateFilter()
+    public function updatingSearchFilter(): void
     {
         $this->resetPage();
     }
 
-    public function setSort($column)
+    public function updatingDateFilter(): void
+    {
+        $this->resetPage();
+    }
+
+    public function setSort(string $column): void
     {
         if ($this->sortColumn === $column) {
             $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
@@ -57,7 +57,7 @@ class Index extends Component
         $this->resetPage();
     }
 
-    public function getCurrentFilterLabel()
+    public function getCurrentFilterLabel(): string
     {
         $labels = [
             '0' => 'Last day',
@@ -71,11 +71,9 @@ class Index extends Component
     }
 
     /**
-     * Get the estimates based on filters.
-     *
-     * @return \Illuminate\Pagination\LengthAwarePaginator
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator<\App\Models\Estimate>
      */
-    public function getEstimatesProperty()
+    public function getEstimatesProperty(): \Illuminate\Contracts\Pagination\LengthAwarePaginator
     {
         $query = Estimate::where('user_id', auth()->id());
 
@@ -104,7 +102,7 @@ class Index extends Component
         return $query->orderBy($this->sortColumn, $this->sortDirection)->paginate(10);
     }
 
-    public function create()
+    public function create(): void
     {
         try {
             $estimate = Estimate::create([
@@ -130,7 +128,7 @@ class Index extends Component
         }
     }
 
-    public function delete($id)
+    public function delete(string $id): void
     {
         try {
             $estimate = Estimate::find($id);
@@ -145,7 +143,7 @@ class Index extends Component
         }
     }
 
-    public function render(): \Illuminate\Contracts\View\View
+    public function render(): \Illuminate\View\View
     {
         return view('livewire.pages.estimate.index', [
             'estimates' => $this->estimates, // Access the computed property here

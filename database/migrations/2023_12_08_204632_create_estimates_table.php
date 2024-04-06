@@ -12,7 +12,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('name')->default('New estimate');
             $table
-                ->integer('hourly_rate')
+                ->float('hourly_rate')
                 ->default(50)
                 ->nullable();
             $table->boolean('show_notes')->default(true);

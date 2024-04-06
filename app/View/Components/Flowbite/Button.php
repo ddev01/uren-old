@@ -2,8 +2,6 @@
 
 namespace App\View\Components\Flowbite;
 
-use Closure;
-use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 class Button extends Component
@@ -16,7 +14,7 @@ class Button extends Component
 
     public string $size;
 
-    public ?string $href;
+    public ?string $href = null;
 
     /**
      * @var string[]
@@ -30,7 +28,6 @@ class Button extends Component
 
     public function __construct(?string $href = null, string $size = 'base', string $color = 'blue')
     {
-        // $this->base = 'flexc text-center text-white font-medium bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800';
         $this->base = 'flexc text-center font-medium rounded-lg focus:ring-4 focus:outline-none hover:scale-105 transition-all cursor-pointer hover:no-underline duration-150 transition-timing-function[button] appearance-none';
         $this->sizes = [
             'xs' => 'px-3 py-2 gap-2 text-xs',
@@ -55,14 +52,11 @@ class Button extends Component
         $this->color = isset($this->colors[$color]) ? $this->colors[$color] : $this->colors['blue'];
 
         $this->elementType = $href ? 'a' : 'button';
+        $this->href = $href;
     }
 
-    /**
-     * Get the view / contents that represent the component.
-     */
-    public function render(): View|Closure|string
+    public function render(): \Illuminate\View\View
     {
-        // Pass the class string to the view
         return view('components.flowbite.button');
     }
 }

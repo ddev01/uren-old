@@ -11,22 +11,22 @@ class Index extends Component
 {
     use WireToast, WithFileUploads;
 
-    public $avatar;
+    public object $avatar;
 
-    public $firstName;
+    public ?string $firstName;
 
-    public $companyName;
+    public ?string $companyName;
 
-    public $companyWebsite;
+    public ?string $companyWebsite;
 
-    public function mount()
+    public function mount(): void
     {
         $this->firstName = Auth::user()->name;
         $this->companyName = Auth::user()->company_name;
         $this->companyWebsite = Auth::user()->company_website;
     }
 
-    public function uploadAvatar()
+    public function uploadAvatar(): void
     {
         $this->validate([
             'avatar' => 'image|mimes:jpg,jpeg,png,gif|max:5120', // 5MB Max
@@ -43,7 +43,7 @@ class Index extends Component
         Auth::user()->update(['avatar' => $filePath]);
     }
 
-    public function updateProfile()
+    public function updateProfile(): void
     {
         $this->validate([
             'firstName' => 'required|min:3',
@@ -62,7 +62,7 @@ class Index extends Component
             ->push();
     }
 
-    public function render(): \Illuminate\Contracts\View\View
+    public function render(): \Illuminate\View\View
     {
         return view('livewire.pages.user.profile.index');
     }

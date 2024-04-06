@@ -7,7 +7,34 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
+ * App\Models\EstimateSection
+ *
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\EstimateSectionRow[] $rows Related EstimateSectionRow models
+ * @property string $id
+ * @property string|null $name
+ * @property string|null $description
+ * @property string|null $note
+ * @property int $position
+ * @property string $estimate_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Estimate $estimate
+ * @property-read int|null $rows_count
+ *
+ * @method static \Database\Factories\EstimateSectionFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|EstimateSection newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EstimateSection newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EstimateSection query()
+ * @method static \Illuminate\Database\Eloquent\Builder|EstimateSection whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EstimateSection whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EstimateSection whereEstimateId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EstimateSection whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EstimateSection whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EstimateSection whereNote($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EstimateSection wherePosition($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EstimateSection whereUpdatedAt($value)
+ *
+ * @mixin \Eloquent
  */
 class EstimateSection extends Model
 {
@@ -39,11 +66,12 @@ class EstimateSection extends Model
 
     /**
      * Calculate the default hours from the section rows.
-     *
-     * @return float
      */
-    public function defaultHours()
+    public function defaultHours(): float
     {
-        return $this->rows->where('type', 'default')->sum('hours');
+        // Use the rows() method to get a query builder instance, then apply the where condition
+        return $this->rows()
+            ->where('type', 'default')
+            ->sum('hours');
     }
 }

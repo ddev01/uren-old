@@ -2,32 +2,40 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Estimate;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Http\Response;
 use NumberFormatter;
 
 class EstimatePdfController extends Controller
 {
-    private $priceTypes = ['once', 'monthly', 'yearly'];
+    /** @var array<string> */
+    private array $priceTypes = ['once', 'monthly', 'yearly'];
 
-    public function streamPdf($estimate)
+    public function streamPdf(Estimate $estimate): Response
     {
         $formattedData = $this->formatEstimateData($estimate);
-        // dd($formattedData);
-        $pdf = PDF::loadView('pdf.estimate', $formattedData);
+        $pdf = Pdf::loadView('pdf.estimate', $formattedData);
 
         return $pdf->stream('estimate.pdf');
     }
 
-    private function formatEstimateData($estimate)
+    /**
+     * Format the estimate data for PDF generation.
+     *
+     * @param  Estimate  $estimate  The estimate to format.
+     * @return array<mixed>
+     */
+    private function formatEstimateData(Estimate $estimate): array
     {
         $totals = $this->initializeTotals($estimate->sections);
-        $totals = $this->calculateTotals($totals, $estimate->hourly_rate);
-        $estimate->hourly_rate = $this->formatPrice($estimate->hourly_rate);
+        $totals = $this->calculateTotals($totals, (float) $estimate->hourly_rate);
+        $estimate->hourly_rate = (float) $this->formatPrice((float) $estimate->hourly_rate); // Adjusted to ensure type compatibility
 
-        // Format each row's hours
         foreach ($estimate->sections as $section) {
             foreach ($section->rows as $row) {
-                $row->formatted_hours = $this->formatValue($row->hours, $row->type);
+                /** @var App\Models\EstimateSectionRow|object $row */
+                $row->formatted_hours = $this->formatValue((float) $row->hours, $row->type);
             }
         }
 
@@ -38,7 +46,10 @@ class EstimatePdfController extends Controller
         ];
     }
 
-    private function initializeTotals($sections)
+    /**
+     * @return array<mixed>
+     */
+    private function initializeTotals(object $sections): array
     {
         $totals = [];
         foreach ($sections as $section) {
@@ -50,20 +61,22 @@ class EstimatePdfController extends Controller
         return $totals;
     }
 
-    private function calculateTotals($totals, $hourlyRate)
+    /**
+     * @param  array<mixed>  $totals
+     * @return array<mixed>
+     */
+    private function calculateTotals(array $totals, float $hourlyRate): array
     {
         foreach ($totals as $type => &$total) {
             $total['sum'] = $total['value'] * $hourlyRate;
-            // Always format the sum as a price
             $total['sum'] = $this->formatPrice($total['sum']);
-            // Format the value based on its type
             $total['value'] = $this->formatValue($total['value'], $type);
         }
 
         return $totals;
     }
 
-    private function formatValue($value, $type)
+    private function formatValue(float $value, string $type): string
     {
         if (in_array($type, $this->priceTypes)) {
             return $this->formatPrice($value);
@@ -72,26 +85,15 @@ class EstimatePdfController extends Controller
         return $this->formatNumber($value);
     }
 
-    private function formatPrice($price)
+    private function formatPrice(float $price): string
     {
-        // $formattedPrice = number_format($price, 2, ',', '');
-        // if (substr($formattedPrice, -3) == ',00') {
-        //     $formattedPrice = substr($formattedPrice, 0, -3);
-        // }
-        // return '$ ' . $formattedPrice . ',-';
-
         $formatter = new NumberFormatter('nl_NL', NumberFormatter::CURRENCY);
-        $formattedPrice = $formatter->formatCurrency($price, 'EUR');
 
-        return $formattedPrice;
+        return $formatter->formatCurrency($price, 'EUR');
     }
 
-    private function formatNumber($number)
+    private function formatNumber(float $number): string
     {
-        if (floor($number) == $number) {
-            return (string) $number;
-        }
-
         return number_format($number, 2, ',', '');
     }
 }

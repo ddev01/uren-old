@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class Summary extends Component
 {
-    public function render(): \Illuminate\Contracts\View\View
+    public function render(): \Illuminate\View\View
     {
         return view('livewire.pages.estimate.edit.summary');
     }
