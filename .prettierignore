@@ -15,3 +15,4 @@ readme.md
 resources/views/components/button.blade.php
 resources/views/components/flowbite
 resources/views/vendor/livewire
+rector.php
