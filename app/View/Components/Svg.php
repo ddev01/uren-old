@@ -6,14 +6,8 @@ use Illuminate\View\Component;
 
 class Svg extends Component
 {
-    public string $icon;
-
-    public string $class;
-
-    public function __construct(string $icon, string $class = '')
+    public function __construct(public string $icon, public string $class = '')
     {
-        $this->icon = $icon;
-        $this->class = $class;
     }
 
     public function render()
@@ -22,7 +16,7 @@ class Svg extends Component
         if (file_exists($path)) {
             $svgContent = file_get_contents($path);
             // Only inject the class attribute into the SVG content if $class is not empty
-            if (! empty($this->class)) {
+            if ($this->class !== '' && $this->class !== '0') {
                 $svgContent = preg_replace('/<svg /', '<svg class="' . $this->class . '" ', $svgContent, 1);
             }
 

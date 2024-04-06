@@ -12,9 +12,9 @@ class Section extends Component
 {
     public EstimateSection $section;
 
-    public ?string $name;
-    public ?string $description;
-    public ?string $note;
+    public ?string $name = null;
+    public ?string $description = null;
+    public ?string $note = null;
 
     /**
      * @var array<string, string>
@@ -150,7 +150,7 @@ class Section extends Component
             // Swap the positions of the two sections
             $sectionAbove->position = $this->section->position;
             $sectionAbove->save();
-            $this->section->position = $this->section->position - 1;
+            $this->section->position -= 1;
             $this->section->save();
         } elseif ($this->section->position == 0) {
             $this->section->estimate
@@ -181,7 +181,7 @@ class Section extends Component
             // Swap the positions of the two sections
             $sectionBelow->position = $this->section->position;
             $sectionBelow->save();
-            $this->section->position = $this->section->position + 1;
+            $this->section->position += 1;
             $this->section->save();
         } elseif ($this->section->position == $this->section->estimate->sections()->count() - 1) {
             $this->section->estimate

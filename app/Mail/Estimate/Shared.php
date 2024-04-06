@@ -12,14 +12,12 @@ class Shared extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * @var array<string, mixed>
-     */
-    public array $data;
-
-    public function __construct(array $data)
-    {
-        $this->data = $data;
+    public function __construct(
+        /**
+         * @var array<string, mixed>
+         */
+        public array $data
+    ) {
     }
 
     /**

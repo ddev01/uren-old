@@ -13,11 +13,11 @@ class Index extends Component
 
     public object $avatar;
 
-    public ?string $firstName;
+    public ?string $firstName = null;
 
-    public ?string $companyName;
+    public ?string $companyName = null;
 
-    public ?string $companyWebsite;
+    public ?string $companyWebsite = null;
 
     public function mount(): void
     {

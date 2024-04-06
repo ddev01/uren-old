@@ -11,25 +11,21 @@ class Row extends Component
 
     public string $type;
 
-    public ?float $hours;
+    public ?float $hours = null;
 
-    public float|string|null $displayHours;
+    public float|string|null $displayHours = null;
 
-    public ?string $name;
+    public ?string $name = null;
 
-    public ?string $description;
+    public ?string $description = null;
 
-    public ?string $note;
+    public ?string $note = null;
 
     public function mount(EstimateSectionRow $row): void
     {
         $this->row = $row;
         $this->type = $this->row->type;
-        if ($this->row->hours == 0) {
-            $this->displayHours = '';
-        } else {
-            $this->displayHours = $this->row->hours;
-        }
+        $this->displayHours = $this->row->hours == 0 ? '' : $this->row->hours;
         $this->name = $this->row->name;
         $this->description = $this->row->description;
         $this->note = $this->row->note;
@@ -43,11 +39,7 @@ class Row extends Component
 
     public function updatedDisplayHours(): void
     {
-        if ($this->displayHours == '') {
-            $this->hours = 0;
-        } else {
-            $this->hours = $this->displayHours;
-        }
+        $this->hours = $this->displayHours == '' ? 0 : $this->displayHours;
         $this->row->hours = $this->hours;
         $this->row->save();
     }
@@ -95,7 +87,7 @@ class Row extends Component
                 ->rows()
                 ->where('position', $this->row->position - 1)
                 ->increment('position');
-            $this->row->position = $this->row->position - 1;
+            $this->row->position -= 1;
             $this->row->save();
             $this->dispatch('sectionRerender');
         }
@@ -159,7 +151,7 @@ class Row extends Component
                 ->rows()
                 ->where('position', $this->row->position + 1)
                 ->decrement('position');
-            $this->row->position = $this->row->position + 1;
+            $this->row->position += 1;
             $this->row->save();
             $this->dispatch('sectionRerender');
         }

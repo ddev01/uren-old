@@ -82,7 +82,7 @@ class ShareManage extends Component
                 ->success('User removed from estimate successfully', 'Estimate')
                 ->push();
             $this->getSharedEmails();
-        } catch (Exception $e) {
+        } catch (Exception) {
             toast()
                 ->danger('Something went wrong removing the user', 'Estimate')
                 ->push();
