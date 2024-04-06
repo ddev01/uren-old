@@ -95,7 +95,7 @@ class Index extends Component
         }
 
         // Apply search filter
-        if (! empty($this->searchFilter)) {
+        if (isset($this->searchFilter) && ($this->searchFilter !== '' && $this->searchFilter !== '0')) {
             $query->where('name', 'like', '%' . $this->searchFilter . '%');
         }
 
@@ -121,7 +121,7 @@ class Index extends Component
             toast()
                 ->success('Created successfully', 'Estimate')
                 ->push();
-        } catch (Exception $e) {
+        } catch (Exception) {
             toast()
                 ->danger('Something went wrong', 'Estimate')
                 ->push();
@@ -136,7 +136,7 @@ class Index extends Component
             toast()
                 ->success('Deleted successfully', 'Estimate')
                 ->push();
-        } catch (Exception $e) {
+        } catch (Exception) {
             toast()
                 ->danger('Something went wrong', 'Estimate')
                 ->push();
