@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $dev = User::factory()->create([
-            'email' => 'dev@outlawz.nl',
+            'email' => 'dev@dev.dev',
             'password' => Hash::make('admin'),
         ]);
         // Create 10 estimates for the developer user
@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
         $section = Section::factory()->create([
             'estimate_id' => $estimate->id,
             'name' => 'Design',
-            'description' => 'Jop van Outlawz designed de website in Figma.',
+            'description' => 'Jop designed de website in Figma.',
             'note' => 'Dit is een notitie.',
         ]);
         $row = Row::factory()->create([
@@ -133,7 +133,7 @@ class DatabaseSeeder extends Seeder
         $devSection = Section::factory()->create([
             'estimate_id' => $estimate->id,
             'name' => 'Development',
-            'description' => 'Douwe van Outlawz developed de website in Laravel.',
+            'description' => 'Douwe developed de website in Laravel.',
             'note' => 'Dit is een notitie.',
         ]);
         $rowsData = [
